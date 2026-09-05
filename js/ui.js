@@ -65,6 +65,9 @@
     setupDialogEvents();
     setupVirtualKeyboardSafety();
 
+    // 4.5 Sync home duration pills with saved settings
+    updateHomeDurationUI(settings.roundDuration);
+
     // 5. Check Session Recovery
     checkSessionRecovery();
   }
@@ -77,6 +80,10 @@
       } else {
         el.classList.remove('active');
       }
+    }
+    if (screenKey === 'home') {
+      const curSettings = storage.getSettings();
+      updateHomeDurationUI(curSettings.roundDuration);
     }
     window.scrollTo(0, 0);
   }
@@ -169,6 +176,24 @@
       soloBtn.addEventListener('click', () => {
         if (audio) audio.playClick();
         gameEngine.startNewGame({ botCount: 0 });
+      });
+    }
+
+    // Quick duration selector on home screen
+    const homeDurOptions = document.getElementById('home-duration-options');
+    if (homeDurOptions) {
+      homeDurOptions.querySelectorAll('.option-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+          const val = parseInt(pill.dataset.val, 10);
+          const currentSettings = storage.getSettings();
+          currentSettings.roundDuration = val;
+          storage.saveSettings(currentSettings);
+          if (gameEngine) {
+            gameEngine.settings = { ...gameEngine.settings, ...currentSettings };
+          }
+          if (audio) audio.playClick();
+          updateHomeDurationUI(val);
+        });
       });
     }
 
@@ -489,7 +514,10 @@
       return;
     }
 
-    if (digitsEl) digitsEl.textContent = timeRemainingSec;
+    if (digitsEl) {
+      digitsEl.textContent = timeRemainingSec;
+      digitsEl.style.fontSize = '';
+    }
 
     if (totalDurationSec > 0 && circleEl) {
       const totalDash = 119.38; // 2 * PI * 19
@@ -899,23 +927,71 @@
     }
   }
 
+  let settingsFeedbackTimeout = null;
+  function flashSettingsSaveFeedback() {
+    const el = document.getElementById('settings-save-feedback');
+    if (el) {
+      el.textContent = '✓ პარამეტრები შენახულია!';
+      el.style.opacity = '1';
+      clearTimeout(settingsFeedbackTimeout);
+      settingsFeedbackTimeout = setTimeout(() => {
+        if (el) {
+          el.textContent = '✓ პარამეტრები ინახება ავტომატურად';
+        }
+      }, 1800);
+    }
+  }
+
+  function updateHomeDurationUI(currentDuration) {
+    const parsed = parseInt(currentDuration, 10);
+    const dur = isNaN(parsed) ? 90 : Math.max(0, parsed);
+    const badge = document.getElementById('home-duration-indicator');
+    if (badge) {
+      badge.textContent = dur === 0 ? '∞ უსასრულო' : `${dur} წმ`;
+    }
+    const homeGroup = document.getElementById('home-duration-options');
+    if (homeGroup) {
+      homeGroup.querySelectorAll('.option-pill').forEach(p => {
+        if (String(p.dataset.val) === String(dur)) {
+          p.classList.add('active');
+        } else {
+          p.classList.remove('active');
+        }
+      });
+    }
+  }
+
   // --- Settings Dialog ---
   function populateSettingsDialog() {
     const settings = storage.getSettings();
 
+    const persist = (showFeedback = true) => {
+      storage.saveSettings(settings);
+      if (gameEngine) {
+        gameEngine.settings = { ...gameEngine.settings, ...settings };
+      }
+      updateHomeDurationUI(settings.roundDuration);
+      if (showFeedback) {
+        flashSettingsSaveFeedback();
+      }
+    };
+
     // Duration pills
     setupPillGroup('setting-duration-options', settings.roundDuration, (val) => {
       settings.roundDuration = parseInt(val, 10);
+      persist(true);
     });
 
     // Rounds count pills
     setupPillGroup('setting-rounds-options', settings.totalRounds, (val) => {
       settings.totalRounds = parseInt(val, 10);
+      persist(true);
     });
 
     // Validation mode pills
     setupPillGroup('setting-validation-options', settings.validationMode, (val) => {
       settings.validationMode = val;
+      persist(true);
     });
 
     // Bot count pills
@@ -930,11 +1006,13 @@
     setupPillGroup('setting-bot-count-options', settings.botCount, (val) => {
       settings.botCount = parseInt(val, 10);
       updateDiffVisibility(settings.botCount);
+      persist(true);
     });
 
     // Bot difficulty pills
     setupPillGroup('setting-bot-diff-options', settings.botDifficulty, (val) => {
       settings.botDifficulty = val;
+      persist(true);
     });
 
     // Categories checkboxes
@@ -958,16 +1036,14 @@
           return;
         }
         settings.activeCategories = checkedBoxes.map(cb => cb.value);
+        persist(true);
       });
 
       catGrid.appendChild(label);
     });
 
     document.getElementById('btn-save-settings').onclick = () => {
-      storage.saveSettings(settings);
-      if (gameEngine) {
-        gameEngine.settings = { ...gameEngine.settings, ...settings };
-      }
+      persist(true);
       closeDialog('settings');
     };
   }
@@ -1418,6 +1494,18 @@
         }
       });
     });
+
+    // Ensure settings dialog close always synchronizes engine and home UI
+    const settingsDialog = document.getElementById('dialog-settings');
+    if (settingsDialog) {
+      settingsDialog.addEventListener('close', () => {
+        const cur = storage.getSettings();
+        if (gameEngine) {
+          gameEngine.settings = { ...gameEngine.settings, ...cur };
+        }
+        updateHomeDurationUI(cur.roundDuration);
+      });
+    }
   }
 
   // --- Virtual Keyboard Safety ---

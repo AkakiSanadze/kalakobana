@@ -71,6 +71,20 @@
       </div>
 
       <div class="home-actions">
+        <div class="home-quick-settings" id="home-quick-settings">
+          <div class="quick-settings-header">
+            <span class="quick-settings-title">⏱️ რაუნდის დრო</span>
+            <span id="home-duration-indicator" class="quick-settings-badge">90 წმ</span>
+          </div>
+          <div class="options-pill-group quick-duration-pills" id="home-duration-options">
+            <button class="option-pill" data-val="60">60 წმ</button>
+            <button class="option-pill" data-val="90">90 წმ</button>
+            <button class="option-pill" data-val="120">120 წმ</button>
+            <button class="option-pill" data-val="180">180 წმ</button>
+            <button class="option-pill" data-val="0">∞ უსასრულო</button>
+          </div>
+        </div>
+
         <button id="btn-play-game" class="btn btn-primary btn-lg">
           ▶️ თამაშის დაწყება
         </button>
@@ -223,6 +237,7 @@
         <h3 class="dialog-title">⚙️ პარამეტრები</h3>
         <button class="icon-btn dialog-close-btn" data-close-dialog="dialog-settings">✕</button>
       </div>
+      <div id="settings-save-feedback" class="settings-auto-save-hint">✓ პარამეტრები ინახება ავტომატურად</div>
 
       <div class="setting-group">
         <label class="setting-label">რაუნდის ხანგრძლივობა</label>

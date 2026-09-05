@@ -180,5 +180,43 @@ test('GameEngine: Infinite round duration (roundDuration: 0) does not start a ti
   assert.strictEqual(engine.roundHistory.length, 1);
 });
 
+test('GameEngine: Timed round duration (60s, 90s, 120s, 180s) correctly initializes timer and total duration', () => {
+  for (const duration of [60, 90, 120, 180]) {
+    const engine = new GameEngine();
+    engine.startNewGame({
+      roundDuration: duration,
+      totalRounds: 1,
+      activeCategories: ['city', 'country']
+    });
 
+    assert.strictEqual(engine.totalRoundDurationSec, duration, `totalRoundDurationSec should be ${duration}`);
+    assert.strictEqual(engine.timeRemainingSec, duration, `timeRemainingSec should be ${duration}`);
 
+    engine.beginActiveRound();
+    assert.strictEqual(engine.state, 'ROUND_ACTIVE');
+    assert.ok(engine.timerId !== null, `Timer should be running for duration ${duration}`);
+    assert.ok(engine.timerEndTime > Date.now(), `Timer end time should be in future`);
+
+    engine.stopTimer();
+  }
+});
+
+test('GameEngine: Switching between infinite duration (0) and timed duration (90s) updates properly', () => {
+  const engine = new GameEngine();
+
+  // First game with infinite time
+  engine.startNewGame({ roundDuration: 0 });
+  assert.strictEqual(engine.totalRoundDurationSec, 0);
+
+  // Next game with 60 seconds
+  engine.startNewGame({ roundDuration: 60 });
+  assert.strictEqual(engine.totalRoundDurationSec, 60);
+
+  // Next game with 90 seconds
+  engine.startNewGame({ roundDuration: 90 });
+  assert.strictEqual(engine.totalRoundDurationSec, 90);
+
+  // Back to infinite
+  engine.startNewGame({ roundDuration: 0 });
+  assert.strictEqual(engine.totalRoundDurationSec, 0);
+});

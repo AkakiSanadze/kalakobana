@@ -280,6 +280,72 @@ button {
   margin: 0 auto;
 }
 
+.home-quick-settings {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quick-settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quick-settings-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quick-settings-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: var(--primary-light);
+  color: var(--primary);
+  letter-spacing: 0.2px;
+}
+
+.quick-duration-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.quick-duration-pills .option-pill {
+  flex: 1 1 calc(20% - 6px);
+  min-width: 54px;
+  padding: 8px 6px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.settings-auto-save-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--success);
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  margin: 4px 0 12px;
+  transition: opacity 0.3s ease;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
