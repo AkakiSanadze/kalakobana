@@ -1,17 +1,4 @@
-(function(root, factory) {
-  const data = factory();
-  if (typeof module === 'object' && module.exports) {
-    module.exports = data;
-  }
-  if (typeof root !== 'undefined') {
-    root.KALAKOBANA_DATA = root.KALAKOBANA_DATA || {};
-    root.KALAKOBANA_DATA['city'] = data;
-  }
-})(typeof globalThis !== 'undefined' ? globalThis : this, function() {
-  return {
-    category: "city",
-    label: "ქალაქი",
-    words: [
+module.exports = [
   {
     "w": "აახენი",
     "popularity": 4,
@@ -10298,6 +10285,4 @@
     "aliases": [],
     "note": ""
   }
-]
-  };
-});
+];

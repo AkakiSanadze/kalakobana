@@ -1,45 +1,9 @@
 module.exports = [
   {
-    "w": "ალისფერი",
-    "popularity": 5,
+    "w": "აგრესიული",
+    "popularity": 4,
     "aliases": [],
-    "note": "მკვეთრი წითელი ფერი"
-  },
-  {
-    "w": "ალალი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "პატიოსანი, გულწრფელი თვისება"
-  },
-  {
-    "w": "ამაყი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "თავმოყვარე თვისება"
-  },
-  {
-    "w": "ახალი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "უახლესი"
-  },
-  {
-    "w": "მწვანე",
-    "popularity": 5,
-    "aliases": [],
-    "note": "ბალახის ფერი"
-  },
-  {
-    "w": "აქტიური",
-    "popularity": 5,
-    "aliases": [],
-    "note": "ენერგიული თვისება"
-  },
-  {
-    "w": "ალერსიანი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "თბილი თვისება"
+    "note": ""
   },
   {
     "w": "ავადმყოფი",
@@ -48,10 +12,166 @@ module.exports = [
     "note": "მდგომარეობა"
   },
   {
+    "w": "ავტორიტეტული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "აზრიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ალალი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "პატიოსანი, გულწრფელი თვისება"
+  },
+  {
+    "w": "ალერსიანი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "თბილი თვისება"
+  },
+  {
+    "w": "ალისფერი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "მკვეთრი წითელი ფერი"
+  },
+  {
+    "w": "ალტრუისტი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ალუბლისფერი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ამაღლებული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ამაყი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "თავმოყვარე თვისება"
+  },
+  {
+    "w": "ამტანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ანგარებიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ანთებული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
     "w": "ანცი",
     "popularity": 4,
     "aliases": [],
     "note": "ცელქი თვისება"
+  },
+  {
+    "w": "აპათიური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "არათანაბარი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "არაორდინალური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "არაჩვეულებრივი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "არგუმენტირებული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "არისტოკრატიული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "არისტოკრატული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "არომატული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ასაკოვანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ატლანტური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "აუჩქარებელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "აქტიური",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ენერგიული თვისება"
+  },
+  {
+    "w": "აღმშენებლობითი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "აღფრთოვანებული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ახალგაზრდა",
@@ -60,52 +180,10 @@ module.exports = [
     "note": "ასაკობრივი თვისება"
   },
   {
-    "w": "ბრძენი",
+    "w": "ახალი",
     "popularity": 5,
     "aliases": [],
-    "note": "ჭკვიანი თვისება"
-  },
-  {
-    "w": "ბეჯითი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "მშრომელი თვისება"
-  },
-  {
-    "w": "ბედნიერი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "გახარებული თვისება"
-  },
-  {
-    "w": "ბრმა",
-    "popularity": 4,
-    "aliases": [],
-    "note": "მდგომარეობა"
-  },
-  {
-    "w": "ბოროტი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "უარყოფითი თვისება"
-  },
-  {
-    "w": "ბრტყელი",
-    "popularity": 4,
-    "aliases": [],
-    "note": "ფორმის თვისება"
-  },
-  {
-    "w": "ბრწყინვალე",
-    "popularity": 5,
-    "aliases": [],
-    "note": "მანათობელი, დიდებული თვისება"
-  },
-  {
-    "w": "ბუნებრივი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "ნამდვილი თვისება"
+    "note": "უახლესი"
   },
   {
     "w": "ბავშვური",
@@ -114,10 +192,304 @@ module.exports = [
     "note": "თვისება"
   },
   {
+    "w": "ბანალური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ბარაქიანი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ბასრი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ბატონყმური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ბაცი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ბაჯბაჯა",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ბედნიერი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "გახარებული თვისება"
+  },
+  {
+    "w": "ბეჭედდასმული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ბეჯითი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "მშრომელი თვისება"
+  },
+  {
+    "w": "ბიზნესური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ბილწი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ბლაგვი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ბლანტი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ბნელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ბორდოსფერი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ბოროტი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "უარყოფითი თვისება"
+  },
+  {
+    "w": "ბრაზიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ბრიყვი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ბრმა",
+    "popularity": 4,
+    "aliases": [],
+    "note": "მდგომარეობა"
+  },
+  {
+    "w": "ბრტყელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": "ფორმის თვისება"
+  },
+  {
+    "w": "ბრძენი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ჭკვიანი თვისება"
+  },
+  {
+    "w": "ბრწყინვალე",
+    "popularity": 5,
+    "aliases": [],
+    "note": "მანათობელი, დიდებული თვისება"
+  },
+  {
+    "w": "ბუმბერაზი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ბუნებრივი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ნამდვილი თვისება"
+  },
+  {
+    "w": "გაბედული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "გადამწყვეტი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "გადაჭარბებული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "გამართული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "გამორჩეული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "გამოცდილი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "გამრჯე",
+    "popularity": 5,
+    "aliases": [],
+    "note": "მშრომელი თვისება"
+  },
+  {
+    "w": "გამძლე",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "გამჭვირვალე",
+    "popularity": 5,
+    "aliases": [],
+    "note": "თვისება"
+  },
+  {
+    "w": "გამჭრიახი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "გამხდარი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "განათლებული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "განსაკუთრებული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "განსწავლული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "გასაოცარი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "გაფანტული",
+    "popularity": 4,
+    "aliases": [],
+    "note": "უყურადღებო თვისება"
+  },
+  {
+    "w": "გემოვნებიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "გემრიელი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "გემოვნური თვისება"
+  },
+  {
+    "w": "გენიალური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "გიგანტური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "გლობალური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "გლუვი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "გმირული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
     "w": "გონიერი",
     "popularity": 5,
     "aliases": [],
     "note": "ჭკვიანი თვისება"
+  },
+  {
+    "w": "გრაციოზული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "გრძელი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "სიგრძის თვისება"
   },
   {
     "w": "გულადი",
@@ -134,22 +506,10 @@ module.exports = [
     "note": "კეთილი თვისება"
   },
   {
-    "w": "გრძელი",
-    "popularity": 5,
+    "w": "გულმოდგინე",
+    "popularity": 4,
     "aliases": [],
-    "note": "სიგრძის თვისება"
-  },
-  {
-    "w": "გამჭვირვალე",
-    "popularity": 5,
-    "aliases": [],
-    "note": "თვისება"
-  },
-  {
-    "w": "გამრჯე",
-    "popularity": 5,
-    "aliases": [],
-    "note": "მშრომელი თვისება"
+    "note": ""
   },
   {
     "w": "გულუბრყვილო",
@@ -158,40 +518,40 @@ module.exports = [
     "note": "მარტივი თვისება"
   },
   {
+    "w": "გულუხვი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "გულქვა",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
     "w": "გულღია",
     "popularity": 5,
     "aliases": [],
     "note": "ალალი თვისება"
   },
   {
-    "w": "გემრიელი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "გემოვნური თვისება"
-  },
-  {
-    "w": "გაფანტული",
+    "w": "გულჩვილი",
     "popularity": 4,
     "aliases": [],
-    "note": "უყურადღებო თვისება"
+    "note": ""
   },
   {
-    "w": "დიდი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "ზომის თვისება"
-  },
-  {
-    "w": "დინჯი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "მშვიდი თვისება"
-  },
-  {
-    "w": "დელიკატური",
+    "w": "გულწრფელი",
     "popularity": 4,
     "aliases": [],
-    "note": "ნაზი თვისება"
+    "note": ""
+  },
+  {
+    "w": "დაბალანსებული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "დაბალი",
@@ -200,10 +560,34 @@ module.exports = [
     "note": "სიმაღლის თვისება"
   },
   {
-    "w": "დრეკადი",
+    "w": "დაგვიანებული",
     "popularity": 4,
     "aliases": [],
-    "note": "მოქნილი თვისება"
+    "note": ""
+  },
+  {
+    "w": "დავიწყებული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "დაკვირვებული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "დამაჯერებელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "დამთმობი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "დამოუკიდებელი",
@@ -212,10 +596,46 @@ module.exports = [
     "note": "თავისუფალი თვისება"
   },
   {
-    "w": "დიდსულოვანი",
-    "popularity": 5,
+    "w": "დამშვიდებული",
+    "popularity": 3,
     "aliases": [],
-    "note": "კეთილშობილი თვისება"
+    "note": ""
+  },
+  {
+    "w": "დარბაისელი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "დარდიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "დარდიმანდი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "დაუდევარი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "დაუვიწყარი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "დაუზარელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "დაუნდობელი",
@@ -224,22 +644,106 @@ module.exports = [
     "note": "სასტიკი თვისება"
   },
   {
-    "w": "ერთგული",
-    "popularity": 5,
-    "aliases": [],
-    "note": "საიმედო თვისება"
-  },
-  {
-    "w": "ენერგიული",
-    "popularity": 5,
-    "aliases": [],
-    "note": "ცოცხალი თვისება"
-  },
-  {
-    "w": "ეჭვიანი",
+    "w": "დაუღალავი",
     "popularity": 4,
     "aliases": [],
-    "note": "თვისება"
+    "note": ""
+  },
+  {
+    "w": "დახვეწილი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "დელიკატური",
+    "popularity": 4,
+    "aliases": [],
+    "note": "ნაზი თვისება"
+  },
+  {
+    "w": "დემოკრატიული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "დეტალური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "დიადი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "დიდებული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "დიდი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ზომის თვისება"
+  },
+  {
+    "w": "დიდსულოვანი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "კეთილშობილი თვისება"
+  },
+  {
+    "w": "დინამიკური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "დინჯი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "მშვიდი თვისება"
+  },
+  {
+    "w": "დისციპლინირებული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "დრამატული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "დრეკადი",
+    "popularity": 4,
+    "aliases": [],
+    "note": "მოქნილი თვისება"
+  },
+  {
+    "w": "დროული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ებრაული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ეგზოტიკური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ეგოისტი",
@@ -248,16 +752,94 @@ module.exports = [
     "note": "თავის თავზე შეყვარებული თვისება"
   },
   {
+    "w": "ეგოისტური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ევროპული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ელასტიური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
     "w": "ელეგანტური",
     "popularity": 5,
     "aliases": [],
     "note": "დახვეწილი თვისება"
   },
   {
-    "w": "ექსტრავაგანტული",
+    "w": "ელექტრული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ენამწარე",
     "popularity": 4,
     "aliases": [],
-    "note": "უცნაური თვისება"
+    "note": ""
+  },
+  {
+    "w": "ენამჭევრი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ენერგიული",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ცოცხალი თვისება"
+  },
+  {
+    "w": "ერთგული",
+    "popularity": 5,
+    "aliases": [],
+    "note": "საიმედო თვისება"
+  },
+  {
+    "w": "ერთობლივი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ერთსულოვანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ერთფეროვანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ეროვნული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ერუდირებული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ესთეტიკური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ეფექტური",
@@ -266,16 +848,34 @@ module.exports = [
     "note": "შედეგიანი თვისება"
   },
   {
-    "w": "ვარდისფერი",
-    "popularity": 5,
+    "w": "ექსპრესიული",
+    "popularity": 4,
     "aliases": [],
-    "note": "ვარდის ფერი"
+    "note": ""
   },
   {
-    "w": "ვერცხლისფერი",
-    "popularity": 5,
+    "w": "ექსტრავაგანტული",
+    "popularity": 4,
     "aliases": [],
-    "note": "ვერცხლის ფერი"
+    "note": "უცნაური თვისება"
+  },
+  {
+    "w": "ექსცენტრიული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ეშმაკი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ეჭვიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": "თვისება"
   },
   {
     "w": "ვაჟკაცური",
@@ -284,16 +884,28 @@ module.exports = [
     "note": "მამაცი თვისება"
   },
   {
-    "w": "ვრცელი",
+    "w": "ვარდისებრი",
     "popularity": 4,
     "aliases": [],
-    "note": "ფართო თვისება"
+    "note": ""
   },
   {
-    "w": "ვიწრო",
+    "w": "ვარდისფერი",
     "popularity": 5,
     "aliases": [],
-    "note": "სიგანის თვისება"
+    "note": "ვარდის ფერი"
+  },
+  {
+    "w": "ვარსკვლავური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ვეებერთელა",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ველური",
@@ -302,34 +914,76 @@ module.exports = [
     "note": "მოუშინაურებელი თვისება"
   },
   {
+    "w": "ვერაგი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ვერცხლისებრი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ვერცხლისფერი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ვერცხლის ფერი"
+  },
+  {
+    "w": "ვიწრო",
+    "popularity": 5,
+    "aliases": [],
+    "note": "სიგანის თვისება"
+  },
+  {
+    "w": "ვრცელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": "ფართო თვისება"
+  },
+  {
+    "w": "ვულკანური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
     "w": "ზარმაცი",
     "popularity": 5,
     "aliases": [],
     "note": "მუქთახორა თვისება"
   },
   {
-    "w": "ზრდილობიანი",
-    "popularity": 5,
+    "w": "ზეგამტარი",
+    "popularity": 4,
     "aliases": [],
-    "note": "კულტურული თვისება"
+    "note": ""
   },
   {
-    "w": "ზღაპრული",
-    "popularity": 5,
+    "w": "ზედაპირული",
+    "popularity": 4,
     "aliases": [],
-    "note": "სასწაული თვისება"
+    "note": ""
   },
   {
-    "w": "ზუსტი",
-    "popularity": 5,
+    "w": "ზედმიწევნითი",
+    "popularity": 4,
     "aliases": [],
-    "note": "უცდომელი თვისება"
+    "note": ""
   },
   {
-    "w": "ზურმუხტისფერი",
-    "popularity": 5,
+    "w": "ზეციური",
+    "popularity": 3,
     "aliases": [],
-    "note": "ღრმა მწვანე ფერი"
+    "note": ""
+  },
+  {
+    "w": "ზიზღიანი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ზომიერი",
@@ -338,22 +992,28 @@ module.exports = [
     "note": "დაბალანსებული თვისება"
   },
   {
-    "w": "თეთრი",
+    "w": "ზრდილობიანი",
     "popularity": 5,
     "aliases": [],
-    "note": "თოვლის ფერი"
+    "note": "კულტურული თვისება"
   },
   {
-    "w": "თბილი",
+    "w": "ზურმუხტისფერი",
     "popularity": 5,
     "aliases": [],
-    "note": "ტემპერატურული თვისება"
+    "note": "ღრმა მწვანე ფერი"
   },
   {
-    "w": "თავმდაბალი",
+    "w": "ზუსტი",
     "popularity": 5,
     "aliases": [],
-    "note": "მოკრძალებული თვისება"
+    "note": "უცდომელი თვისება"
+  },
+  {
+    "w": "ზღაპრული",
+    "popularity": 5,
+    "aliases": [],
+    "note": "სასწაული თვისება"
   },
   {
     "w": "თავაზიანი",
@@ -362,22 +1022,16 @@ module.exports = [
     "note": "ზრდილი თვისება"
   },
   {
-    "w": "თამამი",
-    "popularity": 5,
+    "w": "თავდადებული",
+    "popularity": 4,
     "aliases": [],
-    "note": "გაბედული თვისება"
+    "note": ""
   },
   {
-    "w": "თხელი",
-    "popularity": 5,
+    "w": "თავდაჯერებული",
+    "popularity": 4,
     "aliases": [],
-    "note": "სისქის თვისება"
-  },
-  {
-    "w": "თაფლისფერი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "თაფლის ფერი თვალები ან თმა"
+    "note": ""
   },
   {
     "w": "თავისუფალი",
@@ -386,10 +1040,88 @@ module.exports = [
     "note": "დამოუკიდებელი თვისება"
   },
   {
+    "w": "თავმდაბალი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "მოკრძალებული თვისება"
+  },
+  {
+    "w": "თავშეკავებული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "თამამი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "გაბედული თვისება"
+  },
+  {
+    "w": "თანამგრძნობი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "თანამედროვე",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "თაფლისფერი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "თაფლის ფერი თვალები ან თმა"
+  },
+  {
+    "w": "თბილი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ტემპერატურული თვისება"
+  },
+  {
+    "w": "თეთრი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "თოვლის ფერი"
+  },
+  {
+    "w": "თეთრწვერა",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "თვალთმაქცი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "თვალისმომჭრელი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "თვალტანადი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
     "w": "თვალწარმტაცი",
     "popularity": 5,
     "aliases": [],
     "note": "ულამაზესი თვისება"
+  },
+  {
+    "w": "თხელი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "სისქის თვისება"
   },
   {
     "w": "იასამნისფერი",
@@ -404,16 +1136,52 @@ module.exports = [
     "note": "ფასის თვისება"
   },
   {
-    "w": "იშვიათი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "არაჩვეულებრივი თვისება"
-  },
-  {
     "w": "იდეალური",
     "popularity": 5,
     "aliases": [],
     "note": "სრულყოფილი თვისება"
+  },
+  {
+    "w": "იდუმალი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "იისფერი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "იმედიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ინდივიდუალური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ინიციატივიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ინოვაციური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ინტელექტუალური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ინტელიგენტი",
@@ -422,16 +1190,64 @@ module.exports = [
     "note": "განათლებული თვისება"
   },
   {
-    "w": "იღბლიანი",
-    "popularity": 5,
+    "w": "ინტენსიური",
+    "popularity": 4,
     "aliases": [],
-    "note": "ბედიანი თვისება"
+    "note": ""
+  },
+  {
+    "w": "იოლი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ირონიული",
     "popularity": 4,
     "aliases": [],
     "note": "დაცინვის თვისება"
+  },
+  {
+    "w": "ისტორიული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "იღბლიანი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ბედიანი თვისება"
+  },
+  {
+    "w": "იშვიათი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "არაჩვეულებრივი თვისება"
+  },
+  {
+    "w": "კაპრიზული",
+    "popularity": 4,
+    "aliases": [],
+    "note": "ჭირვეული თვისება"
+  },
+  {
+    "w": "კაშკაშა",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ნათელი თვისება"
+  },
+  {
+    "w": "კდემამოსილი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "კეთილგანწყობილი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "კეთილი",
@@ -446,22 +1262,28 @@ module.exports = [
     "note": "დიდსულოვანი თვისება"
   },
   {
-    "w": "კოხტა",
-    "popularity": 5,
-    "aliases": [],
-    "note": "ლამაზი, მოწესრიგებული თვისება"
-  },
-  {
-    "w": "კაშკაშა",
-    "popularity": 5,
-    "aliases": [],
-    "note": "ნათელი თვისება"
-  },
-  {
-    "w": "კრიალა",
+    "w": "კეკლუცი",
     "popularity": 4,
     "aliases": [],
-    "note": "სუფთა თვისება"
+    "note": "მოფლირტავე თვისება"
+  },
+  {
+    "w": "კლასიკური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "კმაყოფილი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "კოლოსალური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "კომპაქტური",
@@ -470,16 +1292,52 @@ module.exports = [
     "note": "მცირე ზომის თვისება"
   },
   {
-    "w": "კეკლუცი",
+    "w": "კომუნიკაბელური",
     "popularity": 4,
     "aliases": [],
-    "note": "მოფლირტავე თვისება"
+    "note": ""
   },
   {
-    "w": "კაპრიზული",
+    "w": "კომფორტული",
     "popularity": 4,
     "aliases": [],
-    "note": "ჭირვეული თვისება"
+    "note": ""
+  },
+  {
+    "w": "კონკრეტული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "კორეული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "კოხტა",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ლამაზი, მოწესრიგებული თვისება"
+  },
+  {
+    "w": "კრეატიული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "კრიალა",
+    "popularity": 4,
+    "aliases": [],
+    "note": "სუფთა თვისება"
+  },
+  {
+    "w": "კრიტიკული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "კუზიანი",
@@ -488,22 +1346,22 @@ module.exports = [
     "note": "ფიზიკური თვისება"
   },
   {
-    "w": "ლურჯი",
-    "popularity": 5,
+    "w": "კუშტი",
+    "popularity": 4,
     "aliases": [],
-    "note": "ცის ფერი"
+    "note": ""
+  },
+  {
+    "w": "ლაკონიური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ლამაზი",
     "popularity": 5,
     "aliases": [],
     "note": "მშვენიერი თვისება"
-  },
-  {
-    "w": "ლმობიერი",
-    "popularity": 4,
-    "aliases": [],
-    "note": "მოწყალე თვისება"
   },
   {
     "w": "ლაჟვარდოვანი",
@@ -518,16 +1376,70 @@ module.exports = [
     "note": "თავისუფალი, ხალისიანი თვისება"
   },
   {
+    "w": "ლაჩარი",
+    "popularity": 4,
+    "aliases": [],
+    "note": "მშიშარა თვისება"
+  },
+  {
+    "w": "ლბილი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ლეგენდარული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
     "w": "ლიმონისფერი",
     "popularity": 5,
     "aliases": [],
     "note": "ყვითელი ფერი"
   },
   {
-    "w": "ლაჩარი",
+    "w": "ლირიკული",
     "popularity": 4,
     "aliases": [],
-    "note": "მშიშარა თვისება"
+    "note": ""
+  },
+  {
+    "w": "ლმობიერი",
+    "popularity": 4,
+    "aliases": [],
+    "note": "მოწყალე თვისება"
+  },
+  {
+    "w": "ლოგიკური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ლოიალური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ლურჯი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ცის ფერი"
+  },
+  {
+    "w": "მაგარი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მაგიური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "მამაცი",
@@ -536,16 +1448,94 @@ module.exports = [
     "note": "გულადი თვისება"
   },
   {
-    "w": "მშვიდი",
-    "popularity": 5,
+    "w": "მარდი",
+    "popularity": 4,
     "aliases": [],
-    "note": "წყნარი თვისება"
+    "note": ""
   },
   {
-    "w": "მხიარული",
-    "popularity": 5,
+    "w": "მაღალი",
+    "popularity": 4,
     "aliases": [],
-    "note": "ხალისიანი თვისება"
+    "note": ""
+  },
+  {
+    "w": "მაცდური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მაძღარი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მგრძნობიარე",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მდიდარი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მდუმარე",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მეგობრული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მელოდიური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მეცნიერული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მზაკვარი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მთლიანი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მიმზიდველი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მიუტევებელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მიუღწეველი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "მკაცრი",
@@ -554,34 +1544,28 @@ module.exports = [
     "note": "მომთხოვნი თვისება"
   },
   {
-    "w": "მწარე",
-    "popularity": 5,
+    "w": "მკვეთრი",
+    "popularity": 4,
     "aliases": [],
-    "note": "გემოს თვისება"
+    "note": ""
   },
   {
-    "w": "მჟავე",
-    "popularity": 5,
+    "w": "მკვირცხლი",
+    "popularity": 4,
     "aliases": [],
-    "note": "გემოს თვისება"
+    "note": ""
   },
   {
-    "w": "მშვენიერი",
-    "popularity": 5,
+    "w": "მოკლე",
+    "popularity": 3,
     "aliases": [],
-    "note": "ლამაზი თვისება"
+    "note": ""
   },
   {
-    "w": "მორცხვი",
-    "popularity": 5,
+    "w": "მომაჯადოებელი",
+    "popularity": 4,
     "aliases": [],
-    "note": "მორიდებული თვისება"
-  },
-  {
-    "w": "მუქი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "ფერის სიღრმე"
+    "note": ""
   },
   {
     "w": "მომთმენი",
@@ -590,10 +1574,238 @@ module.exports = [
     "note": "მოთმინებიანი თვისება"
   },
   {
-    "w": "ნარინჯისფერი",
+    "w": "მომხიბვლელი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მორიდებული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მორჩილი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მორცხვი",
     "popularity": 5,
     "aliases": [],
-    "note": "ფორთოხლის ფერი"
+    "note": "მორიდებული თვისება"
+  },
+  {
+    "w": "მოსაწყენი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მოქნილი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მოხდენილი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მოხერხებული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მოხუცი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მჟავე",
+    "popularity": 5,
+    "aliases": [],
+    "note": "გემოს თვისება"
+  },
+  {
+    "w": "მრავალმხრივი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მრავალფეროვანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მრგვალი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მრისხანე",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მსუბუქი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მსუქანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მსხვრევადი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მტკიცე",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მუქი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ფერის სიღრმე"
+  },
+  {
+    "w": "მუხანათი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მყარი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მყიფე",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მშვენიერი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ლამაზი თვისება"
+  },
+  {
+    "w": "მშვიდი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "წყნარი თვისება"
+  },
+  {
+    "w": "მშვიდობიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მშვიდობისმოყვარე",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მშიერი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მცოდნე",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მძიმე",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მწარე",
+    "popularity": 5,
+    "aliases": [],
+    "note": "გემოს თვისება"
+  },
+  {
+    "w": "მწვანე",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ბალახის ფერი"
+  },
+  {
+    "w": "მწყალობელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მწყურვალი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მჭევრმეტყველი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მხატვრული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "მხიარული",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ხალისიანი თვისება"
+  },
+  {
+    "w": "მხნე",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ნაადრევი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ნავარჯიშევი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ნაზი",
@@ -602,16 +1814,10 @@ module.exports = [
     "note": "სათუთი თვისება"
   },
   {
-    "w": "ნიჭიერი",
-    "popularity": 5,
+    "w": "ნაზუქიანი",
+    "popularity": 4,
     "aliases": [],
-    "note": "ტალანტით დაჯილდოებული თვისება"
-  },
-  {
-    "w": "ნამდვილი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "ჭეშმარიტი თვისება"
+    "note": ""
   },
   {
     "w": "ნათელი",
@@ -620,10 +1826,40 @@ module.exports = [
     "note": "მანათობელი თვისება"
   },
   {
-    "w": "ნელი",
+    "w": "ნამდვილი",
     "popularity": 5,
     "aliases": [],
-    "note": "სიჩქარის თვისება"
+    "note": "ჭეშმარიტი თვისება"
+  },
+  {
+    "w": "ნარინჯისფერი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ფორთოხლის ფერი"
+  },
+  {
+    "w": "ნარნარი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ნატიფი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ნაღვლიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ნაყოფიერი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ნაცრისფერი",
@@ -638,22 +1874,34 @@ module.exports = [
     "note": "განებივრებული თვისება"
   },
   {
-    "w": "ოქროსფერი",
-    "popularity": 5,
+    "w": "ნეიტრალური",
+    "popularity": 4,
     "aliases": [],
-    "note": "ოქროს ფერი"
+    "note": ""
   },
   {
-    "w": "ოპტიმისტი",
+    "w": "ნელი",
     "popularity": 5,
     "aliases": [],
-    "note": "იმედიანი თვისება"
+    "note": "სიჩქარის თვისება"
   },
   {
-    "w": "ორიგინალური",
+    "w": "ნერვიული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ნიჭიერი",
     "popularity": 5,
     "aliases": [],
-    "note": "განსაკუთრებული თვისება"
+    "note": "ტალანტით დაჯილდოებული თვისება"
+  },
+  {
+    "w": "ნოტიო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ობიექტური",
@@ -662,16 +1910,70 @@ module.exports = [
     "note": "სამართლიანი თვისება"
   },
   {
+    "w": "ოთხკუთხა",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ოპერატიული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ოპტიმისტი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "იმედიანი თვისება"
+  },
+  {
+    "w": "ორგანიზებული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ორგული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ორიგინალური",
+    "popularity": 5,
+    "aliases": [],
+    "note": "განსაკუთრებული თვისება"
+  },
+  {
+    "w": "ოქროსფერი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ოქროს ფერი"
+  },
+  {
+    "w": "ოხერი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
     "w": "ოხუნჯი",
     "popularity": 4,
     "aliases": [],
     "note": "ხუმარა თვისება"
   },
   {
-    "w": "პატიოსანი",
-    "popularity": 5,
+    "w": "პასიური",
+    "popularity": 4,
     "aliases": [],
-    "note": "მართალი თვისება"
+    "note": ""
+  },
+  {
+    "w": "პასუხისმგებლიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "პატარა",
@@ -680,16 +1982,40 @@ module.exports = [
     "note": "მცირე ზომის თვისება"
   },
   {
-    "w": "პუნქტუალური",
-    "popularity": 5,
+    "w": "პატივსაცემი",
+    "popularity": 4,
     "aliases": [],
-    "note": "დროული თვისება"
+    "note": ""
   },
   {
-    "w": "პოზიტიური",
+    "w": "პატიოსანი",
     "popularity": 5,
     "aliases": [],
-    "note": "დადებითი თვისება"
+    "note": "მართალი თვისება"
+  },
+  {
+    "w": "პატრიოტი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "პედაგოგიური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "პერსპექტიული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "პესიმისტი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "პირდაპირი",
@@ -698,16 +2024,70 @@ module.exports = [
     "note": "გულახდილი თვისება"
   },
   {
+    "w": "პირქუში",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "პოეტური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "პოზიტიური",
+    "popularity": 5,
+    "aliases": [],
+    "note": "დადებითი თვისება"
+  },
+  {
+    "w": "პოლიტიკური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "პოპულარული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "პრაქტიკული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
     "w": "პრიალა",
     "popularity": 4,
     "aliases": [],
     "note": "მოელვარე თვისება"
   },
   {
-    "w": "ჟოლოსფერი",
+    "w": "პრინციპული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "პროფესიონალი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "პუნქტუალური",
     "popularity": 5,
     "aliases": [],
-    "note": "ჟოლოს ფერი"
+    "note": "დროული თვისება"
+  },
+  {
+    "w": "ჟანგიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ჟანგისფერი",
@@ -716,10 +2096,100 @@ module.exports = [
     "note": "წითელ-ყავისფერი ფერი"
   },
   {
+    "w": "ჟილკიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ჟინიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ჟოლოსფერი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ჟოლოს ფერი"
+  },
+  {
+    "w": "ჟრიამულიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
     "w": "ჟრუანტელიანი",
     "popularity": 3,
     "aliases": [],
     "note": "თვისება"
+  },
+  {
+    "w": "ჟურნალისტური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ჟღერადი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "რადიკალური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "რაინდული",
+    "popularity": 5,
+    "aliases": [],
+    "note": "დიდსულოვანი თვისება"
+  },
+  {
+    "w": "რაციონალური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "რბილგულიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "რბილი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "სიმკვრივის თვისება"
+  },
+  {
+    "w": "რეალისტი",
+    "popularity": 4,
+    "aliases": [],
+    "note": "მიწაზე მყარად მდგომი თვისება"
+  },
+  {
+    "w": "რეალური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "რთული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "რომანტიკული",
+    "popularity": 5,
+    "aliases": [],
+    "note": "მეოცნებე თვისება"
   },
   {
     "w": "რუხი",
@@ -730,28 +2200,52 @@ module.exports = [
     "note": "ფერი"
   },
   {
-    "w": "რბილი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "სიმკვრივის თვისება"
-  },
-  {
-    "w": "რაინდული",
-    "popularity": 5,
-    "aliases": [],
-    "note": "დიდსულოვანი თვისება"
-  },
-  {
-    "w": "რომანტიკული",
-    "popularity": 5,
-    "aliases": [],
-    "note": "მეოცნებე თვისება"
-  },
-  {
-    "w": "რეალისტი",
+    "w": "რძისფერი",
     "popularity": 4,
     "aliases": [],
-    "note": "მიწაზე მყარად მდგომი თვისება"
+    "note": ""
+  },
+  {
+    "w": "საზარელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "სათნო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "სათუთი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "საიმედო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "საინტერესო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "საკადრისი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "საკვირველი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "სამართლიანი",
@@ -760,16 +2254,100 @@ module.exports = [
     "note": "მართალი თვისება"
   },
   {
-    "w": "სუფთა",
-    "popularity": 5,
+    "w": "სამოქალაქო",
+    "popularity": 3,
     "aliases": [],
-    "note": "გასუფთავებული თვისება"
+    "note": ""
   },
   {
-    "w": "სწრაფი",
-    "popularity": 5,
+    "w": "სანაქებო",
+    "popularity": 4,
     "aliases": [],
-    "note": "მკვირცხლი თვისება"
+    "note": ""
+  },
+  {
+    "w": "სანდო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "სანუკვარი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "საოცარი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "საოცნებო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "საპატიო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "სასარგებლო",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "სასიამოვნო",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "სასტიკი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "სასურველი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "სატრანსპორტო",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "საუკეთესო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "საფუძვლიანი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "საქველმოქმედო",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "საქმიანი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "საყვარელი",
@@ -778,16 +2356,82 @@ module.exports = [
     "note": "ძვირფასი თვისება"
   },
   {
+    "w": "საშინელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
     "w": "სევდიანი",
     "popularity": 5,
     "aliases": [],
     "note": "მოწყენილი თვისება"
   },
   {
-    "w": "სულელი",
+    "w": "სერიოზული",
+    "popularity": 5,
+    "aliases": [],
+    "note": "დაფიქრებული თვისება"
+  },
+  {
+    "w": "სველი",
     "popularity": 4,
     "aliases": [],
-    "note": "უჭკუო თვისება"
+    "note": ""
+  },
+  {
+    "w": "სიმპათიური",
+    "popularity": 5,
+    "aliases": [],
+    "note": "მიმზიდველი თვისება"
+  },
+  {
+    "w": "სინაზის",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "სინათლიანი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "სკეპტიკური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "სოლიდარული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "სოლიდური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "სპილენძისფერი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "სპორტული",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "სტაბილური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "სტაფილოსფერი",
@@ -798,28 +2442,58 @@ module.exports = [
     "note": "სტაფილოს ფერი"
   },
   {
-    "w": "სიმპათიური",
-    "popularity": 5,
+    "w": "სტუმართმოყვარე",
+    "popularity": 3,
     "aliases": [],
-    "note": "მიმზიდველი თვისება"
+    "note": ""
   },
   {
-    "w": "სერიოზული",
-    "popularity": 5,
-    "aliases": [],
-    "note": "დაფიქრებული თვისება"
-  },
-  {
-    "w": "ტკბილი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "შაქრიანი გემო / საყვარელი თვისება"
-  },
-  {
-    "w": "ტლანქი",
+    "w": "სულელი",
     "popularity": 4,
     "aliases": [],
-    "note": "უხეში თვისება"
+    "note": "უჭკუო თვისება"
+  },
+  {
+    "w": "სუსტი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "სუფთა",
+    "popularity": 5,
+    "aliases": [],
+    "note": "გასუფთავებული თვისება"
+  },
+  {
+    "w": "სწორი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "სწრაფი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "მკვირცხლი თვისება"
+  },
+  {
+    "w": "ტალღოვანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ტანადი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "მოხდენილი აღნაგობის თვისება"
+  },
+  {
+    "w": "ტემპერამენტიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ტირიფისფერი",
@@ -828,10 +2502,316 @@ module.exports = [
     "note": "მწვანე ელფერი"
   },
   {
-    "w": "ტანადი",
+    "w": "ტკბილი",
     "popularity": 5,
     "aliases": [],
-    "note": "მოხდენილი აღნაგობის თვისება"
+    "note": "შაქრიანი გემო / საყვარელი თვისება"
+  },
+  {
+    "w": "ტკბილმოუბარი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ტლანქი",
+    "popularity": 4,
+    "aliases": [],
+    "note": "უხეში თვისება"
+  },
+  {
+    "w": "ტოლერანტული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ტოტალური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ტრადიციული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უანგარო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უარესი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უარსი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უბადლო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უბრალო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უგემოვნო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უგრძნობი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უგუნური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უდარდელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უდრეკი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უდროო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უებრო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უზადო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უზრდელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უთხელესი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უიმედო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უკეთესი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უკეთილშობილესი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "თვისება"
+  },
+  {
+    "w": "უკომპრომისო",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ულამაზესი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "მშვენიერი თვისება"
+  },
+  {
+    "w": "ულმობელი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უმანკო",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უმეცარი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უმრავლესი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უმცროსი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უმჯობესი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უნაკლო",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უნიკალური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უნიჭო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უპასუხისმგებლო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უპატიებელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უპატიოსნო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ურყევი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უსაზღვრო",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უსამართლო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უსასრულო",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უსაფრთხო",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უსიამოვნო",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უსირცხვილო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უსუსური",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უტიფარი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უფერო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უფროსი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უქონელი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უღალატო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უყურადღებო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "უშიშარი",
@@ -842,10 +2822,22 @@ module.exports = [
     "note": "გულადი თვისება"
   },
   {
-    "w": "უხვი",
-    "popularity": 5,
+    "w": "უშნო",
+    "popularity": 4,
     "aliases": [],
-    "note": "უხვმოსავლიანი / ხელგაშლილი თვისება"
+    "note": ""
+  },
+  {
+    "w": "უჩვეულებრივი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უჩვეულო",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "უცნაური",
@@ -854,34 +2846,58 @@ module.exports = [
     "note": "არაორდინარული თვისება"
   },
   {
-    "w": "უკეთილშობილესი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "თვისება"
-  },
-  {
-    "w": "ულამაზესი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "მშვენიერი თვისება"
-  },
-  {
     "w": "უძლეველი",
     "popularity": 5,
     "aliases": [],
     "note": "ძლიერი თვისება"
   },
   {
-    "w": "ფრთხილი",
-    "popularity": 5,
+    "w": "უძლური",
+    "popularity": 4,
     "aliases": [],
-    "note": "დაკვირვებული თვისება"
+    "note": ""
   },
   {
-    "w": "ფერადი",
+    "w": "უწიგნური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უწმინდესი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უჭკუო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უხეში",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "უხვი",
     "popularity": 5,
     "aliases": [],
-    "note": "მრავალფერიანი თვისება"
+    "note": "უხვმოსავლიანი / ხელგაშლილი თვისება"
+  },
+  {
+    "w": "უხინჯო",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ფანტასტიკური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ფართო",
@@ -890,16 +2906,34 @@ module.exports = [
     "note": "სიგანის თვისება"
   },
   {
-    "w": "ფუმფულა",
-    "popularity": 5,
+    "w": "ფარული",
+    "popularity": 3,
     "aliases": [],
-    "note": "რბილი თვისება"
+    "note": ""
   },
   {
-    "w": "ფიცხი",
+    "w": "ფასდაუდებელი",
     "popularity": 4,
     "aliases": [],
-    "note": "ცხარე ხასიათის თვისება"
+    "note": ""
+  },
+  {
+    "w": "ფაქიზი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ფერადი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "მრავალფერიანი თვისება"
+  },
+  {
+    "w": "ფილოსოფიური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ფირუზისფერი",
@@ -908,16 +2942,46 @@ module.exports = [
     "note": "ცისფერ-მწვანე ფერი"
   },
   {
-    "w": "ქერა",
-    "popularity": 5,
-    "aliases": [],
-    "note": "ღია ფერის თმა"
-  },
-  {
-    "w": "ქედმაღალი",
+    "w": "ფიცხი",
     "popularity": 4,
     "aliases": [],
-    "note": "ამაყი, ამპარტავანი თვისება"
+    "note": "ცხარე ხასიათის თვისება"
+  },
+  {
+    "w": "ფრთხილი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "დაკვირვებული თვისება"
+  },
+  {
+    "w": "ფუმფულა",
+    "popularity": 5,
+    "aliases": [],
+    "note": "რბილი თვისება"
+  },
+  {
+    "w": "ფხიზელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ქალური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ქარაფშუტა",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ქარვისფერი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ქართული",
@@ -926,22 +2990,40 @@ module.exports = [
     "note": "ქართველთა ეროვნული თვისება"
   },
   {
+    "w": "ქარიშხლიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ქედმაღალი",
+    "popularity": 4,
+    "aliases": [],
+    "note": "ამაყი, ამპარტავანი თვისება"
+  },
+  {
+    "w": "ქედუხრელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ქერა",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ღია ფერის თმა"
+  },
+  {
     "w": "ქველმოქმედი",
     "popularity": 5,
     "aliases": [],
     "note": "მზრუნველი თვისება"
   },
   {
-    "w": "ღია",
-    "popularity": 5,
+    "w": "ქოთქოთა",
+    "popularity": 4,
     "aliases": [],
-    "note": "ნათელი ფერი ან ხასიათი"
-  },
-  {
-    "w": "ღირსეული",
-    "popularity": 5,
-    "aliases": [],
-    "note": "პატივსაცემი თვისება"
+    "note": ""
   },
   {
     "w": "ღარიბი",
@@ -950,10 +3032,34 @@ module.exports = [
     "note": "მატერიალური თვისება"
   },
   {
-    "w": "ღრმა",
+    "w": "ღვთისნიერი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ღია",
     "popularity": 5,
     "aliases": [],
-    "note": "აზრიანი ან სიღრმის თვისება"
+    "note": "ნათელი ფერი ან ხასიათი"
+  },
+  {
+    "w": "ღია-ლურჯი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ღია-მწვანე",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ღიმილიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ღიმილისმომგვრელი",
@@ -962,10 +3068,40 @@ module.exports = [
     "note": "თვისება"
   },
   {
-    "w": "ყვითელი",
+    "w": "ღირებული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ღირსეული",
     "popularity": 5,
     "aliases": [],
-    "note": "მზის ფერი"
+    "note": "პატივსაცემი თვისება"
+  },
+  {
+    "w": "ღირსშესანიშნავი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ღონიერი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ღრმა",
+    "popularity": 5,
+    "aliases": [],
+    "note": "აზრიანი ან სიღრმის თვისება"
+  },
+  {
+    "w": "ყავისფერთმიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ყავისფერი",
@@ -974,10 +3110,40 @@ module.exports = [
     "note": "ყავის ფერი"
   },
   {
+    "w": "ყბედი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ყვითელთმიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ყვითელი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "მზის ფერი"
+  },
+  {
+    "w": "ყინულოვანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
     "w": "ყოჩაღი",
     "popularity": 5,
     "aliases": [],
     "note": "მარჯვე, გამრჯე თვისება"
+  },
+  {
+    "w": "ყრუ",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ყურადღებიანი",
@@ -992,6 +3158,72 @@ module.exports = [
     "note": "ღამის ფერი"
   },
   {
+    "w": "შემოქმედებითი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "შესანიშნავი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "შესაფერისი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "შეუმცდარი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "შეუცვლელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "შთამბეჭდავი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "შინაური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "შინდისფერი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "შმაგი",
+    "popularity": 4,
+    "aliases": [],
+    "note": "გიჟმაჟი თვისება"
+  },
+  {
+    "w": "შოკოლადისფერი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "მუქი ყავისფერი"
+  },
+  {
+    "w": "შორსმჭვრეტელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
     "w": "შრომისმოყვარე",
     "popularity": 5,
     "aliases": [],
@@ -1004,30 +3236,16 @@ module.exports = [
     "note": "თვისება"
   },
   {
-    "w": "შოკოლადისფერი",
-    "popularity": 5,
-    "aliases": [],
-    "note": "მუქი ყავისფერი"
-  },
-  {
-    "w": "შმაგი",
+    "w": "ჩაკეტილი",
     "popularity": 4,
     "aliases": [],
-    "note": "გიჟმაჟი თვისება"
+    "note": ""
   },
   {
-    "w": "ჭკვიანი",
-    "popularity": 5,
-    "aliases": [
-      "გონიერი"
-    ],
-    "note": "გონებამახვილი თვისება"
-  },
-  {
-    "w": "ჩუმი",
-    "popularity": 5,
+    "w": "ჩასკვნილი",
+    "popularity": 4,
     "aliases": [],
-    "note": "მდუმარე თვისება"
+    "note": ""
   },
   {
     "w": "ჩახლართული",
@@ -1036,22 +3254,58 @@ module.exports = [
     "note": "რთული თვისება"
   },
   {
+    "w": "ჩვეულებრივი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
     "w": "ჩვილი",
     "popularity": 4,
     "aliases": [],
     "note": "ნაზი, პატარა თვისება"
   },
   {
-    "w": "ცისფერი",
+    "w": "ჩუმი",
     "popularity": 5,
     "aliases": [],
-    "note": "ნათელი ცის ფერი"
+    "note": "მდუმარე თვისება"
+  },
+  {
+    "w": "ჩქარი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ცბიერი",
     "popularity": 5,
     "aliases": [],
     "note": "ეშმაკი თვისება"
+  },
+  {
+    "w": "ცელქი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ანცი თვისება"
+  },
+  {
+    "w": "ცვალებადი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ცივი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ცისფერი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ნათელი ცის ფერი"
   },
   {
     "w": "ცნობისმოყვარე",
@@ -1066,16 +3320,22 @@ module.exports = [
     "note": "ენერგიული თვისება"
   },
   {
-    "w": "ცელქი",
-    "popularity": 5,
+    "w": "ცქვიტი",
+    "popularity": 4,
     "aliases": [],
-    "note": "ანცი თვისება"
+    "note": ""
   },
   {
-    "w": "ძლიერი",
-    "popularity": 5,
+    "w": "ცხელი",
+    "popularity": 4,
     "aliases": [],
-    "note": "მძლავრი თვისება"
+    "note": ""
+  },
+  {
+    "w": "ძალუმად",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ძველი",
@@ -1090,10 +3350,70 @@ module.exports = [
     "note": "ფასეული თვისება"
   },
   {
+    "w": "ძირფესვიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ძლიერი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "მძლავრი თვისება"
+  },
+  {
+    "w": "ძნელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
     "w": "ძუნწი",
     "popularity": 5,
     "aliases": [],
     "note": "ხარბი თვისება"
+  },
+  {
+    "w": "წარმატებული",
+    "popularity": 5,
+    "aliases": [],
+    "note": "იღბლიანი თვისება"
+  },
+  {
+    "w": "წარმოსადეგი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "წვეტიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "წვრილი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "თხელი თვისება"
+  },
+  {
+    "w": "წვრილმანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "წიგნიერი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "წითელთმიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "წითელი",
@@ -1108,22 +3428,22 @@ module.exports = [
     "note": "სუფთა, ღვთიური თვისება"
   },
   {
-    "w": "წვრილი",
-    "popularity": 5,
+    "w": "წრფელი",
+    "popularity": 4,
     "aliases": [],
-    "note": "თხელი თვისება"
+    "note": ""
   },
   {
-    "w": "წარმატებული",
-    "popularity": 5,
+    "w": "ჭაბუკური",
+    "popularity": 4,
     "aliases": [],
-    "note": "იღბლიანი თვისება"
+    "note": ""
   },
   {
-    "w": "ჭრელი",
-    "popularity": 5,
+    "w": "ჭარმაგი",
+    "popularity": 4,
     "aliases": [],
-    "note": "ფერადი თვისება"
+    "note": "ასაკოვანი თვისება"
   },
   {
     "w": "ჭეშმარიტი",
@@ -1132,10 +3452,42 @@ module.exports = [
     "note": "ნამდვილი თვისება"
   },
   {
-    "w": "ჭარმაგი",
+    "w": "ჭკვიანი",
+    "popularity": 5,
+    "aliases": [
+      "გონიერი"
+    ],
+    "note": "გონებამახვილი თვისება"
+  },
+  {
+    "w": "ჭრელი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ფერადი თვისება"
+  },
+  {
+    "w": "ჭუჭყიანი",
     "popularity": 4,
     "aliases": [],
-    "note": "ასაკოვანი თვისება"
+    "note": ""
+  },
+  {
+    "w": "ჭყლიაპა",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ხავერდოვანი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "ნაზი თვისება"
+  },
+  {
+    "w": "ხაკისფერი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ხალისიანი",
@@ -1150,10 +3502,40 @@ module.exports = [
     "note": "გაუმაძღარი თვისება"
   },
   {
-    "w": "ხავერდოვანი",
-    "popularity": 5,
+    "w": "ხარისხიანი",
+    "popularity": 4,
     "aliases": [],
-    "note": "ნაზი თვისება"
+    "note": ""
+  },
+  {
+    "w": "ხასიათიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ხელგაშლილი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ხელმისაწვდომი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ხელუხლებელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ხელშეუხებელი",
+    "popularity": 3,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ხისტი",
@@ -1162,16 +3544,34 @@ module.exports = [
     "note": "უხეში თვისება"
   },
   {
-    "w": "ჯიუტი",
-    "popularity": 5,
+    "w": "ხმაურიანი",
+    "popularity": 4,
     "aliases": [],
-    "note": "გაუტეხელი თვისება"
+    "note": ""
   },
   {
-    "w": "ჯანსაღი",
-    "popularity": 5,
+    "w": "ხმელი",
+    "popularity": 4,
     "aliases": [],
-    "note": "ჯანმრთელი თვისება"
+    "note": ""
+  },
+  {
+    "w": "ხნიერი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ხორკლიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ხორცისფერი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ჯადოსნური",
@@ -1180,16 +3580,70 @@ module.exports = [
     "note": "ზღაპრული თვისება"
   },
   {
-    "w": "ჰარმონიული",
+    "w": "ჯანიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ჯანმრთელი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ჯანსაღი",
     "popularity": 5,
     "aliases": [],
-    "note": "შეხამებული თვისება"
+    "note": "ჯანმრთელი თვისება"
+  },
+  {
+    "w": "ჯენტლმენური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ჯიუტი",
+    "popularity": 5,
+    "aliases": [],
+    "note": "გაუტეხელი თვისება"
+  },
+  {
+    "w": "ჯიშიანი",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ჰაეროვანი",
     "popularity": 5,
     "aliases": [],
     "note": "მსუბუქი თვისება"
+  },
+  {
+    "w": "ჰარმონიული",
+    "popularity": 5,
+    "aliases": [],
+    "note": "შეხამებული თვისება"
+  },
+  {
+    "w": "ჰეროიკული",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ჰიგიენური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
+  },
+  {
+    "w": "ჰუმანისტური",
+    "popularity": 4,
+    "aliases": [],
+    "note": ""
   },
   {
     "w": "ჰუმანური",

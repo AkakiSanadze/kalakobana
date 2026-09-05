@@ -1,17 +1,4 @@
-(function(root, factory) {
-  const data = factory();
-  if (typeof module === 'object' && module.exports) {
-    module.exports = data;
-  }
-  if (typeof root !== 'undefined') {
-    root.KALAKOBANA_DATA = root.KALAKOBANA_DATA || {};
-    root.KALAKOBANA_DATA['country'] = data;
-  }
-})(typeof globalThis !== 'undefined' ? globalThis : this, function() {
-  return {
-    category: "country",
-    label: "ქვეყანა",
-    words: [
+module.exports = [
   {
     "w": "ავსტრალია",
     "popularity": 5,
@@ -1687,6 +1674,4 @@
     "aliases": [],
     "note": "ცენტრალური ამერიკის ქვეყანა"
   }
-]
-  };
-});
+];

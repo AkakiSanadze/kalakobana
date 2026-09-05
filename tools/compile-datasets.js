@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 const mappings = [
+  { builder: 'cities.js', target: 'cities.js', key: 'city', label: 'ქალაქი' },
+  { builder: 'countries.js', target: 'countries.js', key: 'country', label: 'ქვეყანა' },
   { builder: 'plants.js', target: 'plants.js', key: 'plant', label: 'მცენარე' },
   { builder: 'animals.js', target: 'animals.js', key: 'animal', label: 'ცხოველი' },
   { builder: 'geography.js', target: 'geography.js', key: 'geography', label: 'გეოგრაფიული ობიექტი' },
