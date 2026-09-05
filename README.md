@@ -4,6 +4,9 @@
 
 თამაში მუშაობს **100% ლოკალურად და ოფლაინ რეჟიმში ბრაუზერში** — არანაირი სერვერი, რეგისტრაცია, ავტორიზაცია, მონაცემთა ბაზის სერვერი ან გარე ბიბლიოთეკა (Zero Dependencies).
 
+🌐 **ონლაინ ვერსია (Live Demo):** [https://kalakobana-snowy.vercel.app](https://kalakobana-snowy.vercel.app)  
+📦 **GitHub რეპოზიტორია:** [https://github.com/AkakiSanadze/kalakobana](https://github.com/AkakiSanadze/kalakobana)
+
 ---
 
 ## 🚀 გაშვების გზები
