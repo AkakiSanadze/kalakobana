@@ -74,6 +74,9 @@
         <button id="btn-play-game" class="btn btn-primary btn-lg">
           ▶️ თამაშის დაწყება
         </button>
+        <button id="btn-play-solo" class="btn btn-secondary btn-lg">
+          👤 სოლო რეჟიმი (ბოტების გარეშე)
+        </button>
         
         <div class="menu-grid">
           <button id="btn-menu-dict" class="menu-card-btn">
@@ -255,13 +258,14 @@
       <div class="setting-group">
         <label class="setting-label">მოწინააღმდეგე ბოტები</label>
         <div class="options-pill-group" id="setting-bot-count-options">
+          <button class="option-pill" data-val="0">0 (სოლო)</button>
           <button class="option-pill" data-val="1">1 ბოტი</button>
           <button class="option-pill" data-val="2">2 ბოტი</button>
           <button class="option-pill" data-val="3">3 ბოტი</button>
         </div>
       </div>
 
-      <div class="setting-group">
+      <div class="setting-group" id="setting-group-bot-difficulty">
         <label class="setting-label">ბოტების სირთულე</label>
         <div class="options-pill-group" id="setting-bot-diff-options">
           <button class="option-pill" data-val="easy">მარტივი</button>

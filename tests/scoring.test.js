@@ -93,3 +93,25 @@ test('Scoring: Early finish bonus gives +5 points', () => {
   // Bot: 20
   assert.strictEqual(result.roundScores['bot'].totalPoints, 20);
 });
+
+test('Scoring: Solo player valid answers award 10 points each (not 20)', () => {
+  const result = scoring.scoreRound({
+    categories: ['city', 'country'],
+    participants: [
+      {
+        id: 'player',
+        isHuman: true,
+        answers: {
+          city: { word: 'თბილისი', isValid: true, canonical: 'თბილისი' },
+          country: { word: 'თურქეთი', isValid: true, canonical: 'თურქეთი' }
+        }
+      }
+    ],
+    applyEarlyBonus: false
+  });
+
+  assert.strictEqual(result.roundScores['player'].totalPoints, 20);
+  assert.strictEqual(result.categoryResults['city']['player'].points, 10);
+  assert.strictEqual(result.categoryResults['country']['player'].points, 10);
+});
+

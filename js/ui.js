@@ -164,6 +164,14 @@
       gameEngine.startNewGame();
     });
 
+    const soloBtn = document.getElementById('btn-play-solo');
+    if (soloBtn) {
+      soloBtn.addEventListener('click', () => {
+        if (audio) audio.playClick();
+        gameEngine.startNewGame({ botCount: 0 });
+      });
+    }
+
     document.getElementById('btn-menu-dict').addEventListener('click', () => {
       openDictionaryDialog();
     });
@@ -555,7 +563,11 @@
     const nextRoundBtn = document.getElementById('btn-next-round');
 
     // Winner text
-    if (roundData.winnerId) {
+    if (engine.participants.length === 1) {
+      const human = engine.participants[0];
+      const pts = roundData.roundScores[human.id] ? roundData.roundScores[human.id].totalPoints : 0;
+      winnerBanner.textContent = `რაუნდი დასრულდა! (+${pts} ქულა) ✨`;
+    } else if (roundData.winnerId) {
       const winner = engine.participants.find(p => p.id === roundData.winnerId);
       winnerBanner.textContent = winner
         ? `${winner.name}-მ მოიგო ეს რაუნდი! 🏆`
@@ -651,7 +663,13 @@
     const human = engine.participants.find(p => p.isHuman);
     const humanWon = sorted[0] && sorted[0].isHuman;
 
-    if (humanWon) {
+    const isSolo = engine.participants.length === 1;
+    if (isSolo) {
+      trophy.textContent = '🏆';
+      title.textContent = 'თამაში დასრულდა!';
+      subtitle.textContent = `თქვენ დააგროვეთ სულ ${engine.cumulativeScores[human.id] || 0} ქულა!`;
+      startConfetti();
+    } else if (humanWon) {
       trophy.textContent = '🥇';
       title.textContent = 'გილოცავ! შენ გაიმარჯვე!';
       subtitle.textContent = `საუკეთესო შედეგი: ${engine.cumulativeScores[human.id]} ქულა`;
@@ -783,8 +801,17 @@
     });
 
     // Bot count pills
+    const diffGroup = document.getElementById('setting-group-bot-difficulty');
+    const updateDiffVisibility = (count) => {
+      if (diffGroup) {
+        diffGroup.style.display = count === 0 ? 'none' : 'block';
+      }
+    };
+    updateDiffVisibility(settings.botCount);
+
     setupPillGroup('setting-bot-count-options', settings.botCount, (val) => {
       settings.botCount = parseInt(val, 10);
+      updateDiffVisibility(settings.botCount);
     });
 
     // Bot difficulty pills

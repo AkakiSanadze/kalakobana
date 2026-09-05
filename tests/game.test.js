@@ -80,3 +80,30 @@ test('GameEngine: State transitions and round flow', () => {
   engine.proceedFromResults();
   assert.strictEqual(engine.state, 'GAME_OVER');
 });
+
+test('GameEngine: Solo mode (botCount: 0) runs with 1 participant and completes successfully', () => {
+  const engine = new GameEngine();
+  engine.startNewGame({
+    roundDuration: 10,
+    totalRounds: 1,
+    botCount: 0,
+    activeCategories: ['city']
+  });
+
+  assert.strictEqual(engine.participants.length, 1);
+  assert.strictEqual(engine.participants[0].isHuman, true);
+
+  engine.beginActiveRound();
+  engine.currentLetter = 'თ';
+  engine.currentLetterMeta = { letter: 'თ', weight: 5, difficulty: 'easy', impossibleCategories: [] };
+  engine.setPlayerInput('city', 'თბილისი');
+  engine.finishRound();
+
+  assert.strictEqual(engine.state, 'ROUND_RESULTS');
+  assert.strictEqual(engine.roundHistory.length, 1);
+  assert.strictEqual(engine.cumulativeScores['player'], 10);
+
+  engine.proceedFromResults();
+  assert.strictEqual(engine.state, 'GAME_OVER');
+});
+

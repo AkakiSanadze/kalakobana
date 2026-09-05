@@ -83,10 +83,13 @@
       // If only one participant had a valid answer in this category
       if (validParticipants.length === 1) {
         const loneWinnerId = validParticipants[0];
-        categoryResults[catId][loneWinnerId].points = RULES.ONLY_ONE;
-        categoryResults[catId][loneWinnerId].reason = 'only_one';
-        roundScores[loneWinnerId].categoryPoints += RULES.ONLY_ONE;
-        roundScores[loneWinnerId].totalPoints += RULES.ONLY_ONE;
+        const isSolo = participants.length === 1;
+        const pts = isSolo ? RULES.UNIQUE : RULES.ONLY_ONE;
+        const reason = isSolo ? 'unique' : 'only_one';
+        categoryResults[catId][loneWinnerId].points = pts;
+        categoryResults[catId][loneWinnerId].reason = reason;
+        roundScores[loneWinnerId].categoryPoints += pts;
+        roundScores[loneWinnerId].totalPoints += pts;
       } else if (validParticipants.length > 1) {
         // Multiple valid answers
         for (const [canon, pIds] of canonicalMap.entries()) {

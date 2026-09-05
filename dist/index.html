@@ -27909,10 +27909,13 @@ dialog::backdrop {
       // If only one participant had a valid answer in this category
       if (validParticipants.length === 1) {
         const loneWinnerId = validParticipants[0];
-        categoryResults[catId][loneWinnerId].points = RULES.ONLY_ONE;
-        categoryResults[catId][loneWinnerId].reason = 'only_one';
-        roundScores[loneWinnerId].categoryPoints += RULES.ONLY_ONE;
-        roundScores[loneWinnerId].totalPoints += RULES.ONLY_ONE;
+        const isSolo = participants.length === 1;
+        const pts = isSolo ? RULES.UNIQUE : RULES.ONLY_ONE;
+        const reason = isSolo ? 'unique' : 'only_one';
+        categoryResults[catId][loneWinnerId].points = pts;
+        categoryResults[catId][loneWinnerId].reason = reason;
+        roundScores[loneWinnerId].categoryPoints += pts;
+        roundScores[loneWinnerId].totalPoints += pts;
       } else if (validParticipants.length > 1) {
         // Multiple valid answers
         for (const [canon, pIds] of canonicalMap.entries()) {
@@ -28862,6 +28865,9 @@ dialog::backdrop {
         <button id="btn-play-game" class="btn btn-primary btn-lg">
           ▶️ თამაშის დაწყება
         </button>
+        <button id="btn-play-solo" class="btn btn-secondary btn-lg">
+          👤 სოლო რეჟიმი (ბოტების გარეშე)
+        </button>
         
         <div class="menu-grid">
           <button id="btn-menu-dict" class="menu-card-btn">
@@ -29043,13 +29049,14 @@ dialog::backdrop {
       <div class="setting-group">
         <label class="setting-label">მოწინააღმდეგე ბოტები</label>
         <div class="options-pill-group" id="setting-bot-count-options">
+          <button class="option-pill" data-val="0">0 (სოლო)</button>
           <button class="option-pill" data-val="1">1 ბოტი</button>
           <button class="option-pill" data-val="2">2 ბოტი</button>
           <button class="option-pill" data-val="3">3 ბოტი</button>
         </div>
       </div>
 
-      <div class="setting-group">
+      <div class="setting-group" id="setting-group-bot-difficulty">
         <label class="setting-label">ბოტების სირთულე</label>
         <div class="options-pill-group" id="setting-bot-diff-options">
           <button class="option-pill" data-val="easy">მარტივი</button>
@@ -29311,6 +29318,14 @@ dialog::backdrop {
       if (audio) audio.playClick();
       gameEngine.startNewGame();
     });
+
+    const soloBtn = document.getElementById('btn-play-solo');
+    if (soloBtn) {
+      soloBtn.addEventListener('click', () => {
+        if (audio) audio.playClick();
+        gameEngine.startNewGame({ botCount: 0 });
+      });
+    }
 
     document.getElementById('btn-menu-dict').addEventListener('click', () => {
       openDictionaryDialog();
@@ -29703,7 +29718,11 @@ dialog::backdrop {
     const nextRoundBtn = document.getElementById('btn-next-round');
 
     // Winner text
-    if (roundData.winnerId) {
+    if (engine.participants.length === 1) {
+      const human = engine.participants[0];
+      const pts = roundData.roundScores[human.id] ? roundData.roundScores[human.id].totalPoints : 0;
+      winnerBanner.textContent = `რაუნდი დასრულდა! (+${pts} ქულა) ✨`;
+    } else if (roundData.winnerId) {
       const winner = engine.participants.find(p => p.id === roundData.winnerId);
       winnerBanner.textContent = winner
         ? `${winner.name}-მ მოიგო ეს რაუნდი! 🏆`
@@ -29799,7 +29818,13 @@ dialog::backdrop {
     const human = engine.participants.find(p => p.isHuman);
     const humanWon = sorted[0] && sorted[0].isHuman;
 
-    if (humanWon) {
+    const isSolo = engine.participants.length === 1;
+    if (isSolo) {
+      trophy.textContent = '🏆';
+      title.textContent = 'თამაში დასრულდა!';
+      subtitle.textContent = `თქვენ დააგროვეთ სულ ${engine.cumulativeScores[human.id] || 0} ქულა!`;
+      startConfetti();
+    } else if (humanWon) {
       trophy.textContent = '🥇';
       title.textContent = 'გილოცავ! შენ გაიმარჯვე!';
       subtitle.textContent = `საუკეთესო შედეგი: ${engine.cumulativeScores[human.id]} ქულა`;
@@ -29931,8 +29956,17 @@ dialog::backdrop {
     });
 
     // Bot count pills
+    const diffGroup = document.getElementById('setting-group-bot-difficulty');
+    const updateDiffVisibility = (count) => {
+      if (diffGroup) {
+        diffGroup.style.display = count === 0 ? 'none' : 'block';
+      }
+    };
+    updateDiffVisibility(settings.botCount);
+
     setupPillGroup('setting-bot-count-options', settings.botCount, (val) => {
       settings.botCount = parseInt(val, 10);
+      updateDiffVisibility(settings.botCount);
     });
 
     // Bot difficulty pills
