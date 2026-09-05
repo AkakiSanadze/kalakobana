@@ -20,6 +20,17 @@
   let activeInputs = {};
   let debounceTimers = {};
 
+  // HTML sanitization helper to neutralize XSS in dynamic content
+  function escapeHtml(str) {
+    if (str == null) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   // DOM Elements
   const screens = {
     home: document.getElementById('screen-home'),
@@ -436,30 +447,30 @@
     if (res.status === 'empty') {
       indicator.textContent = '⚪';
       const catMeta = config.ALL_CATEGORIES.find(c => c.id === catId);
-      hint.innerHTML = `<span>${catMeta ? catMeta.description : ''}</span>`;
+      hint.innerHTML = `<span>${catMeta ? escapeHtml(catMeta.description) : ''}</span>`;
     } else if (res.status === 'valid') {
       indicator.textContent = '✓';
       indicator.classList.add('indicator-valid');
       input.classList.add('input-valid');
       hint.classList.add('hint-success');
-      hint.innerHTML = `<span>✓ ${res.message}</span>`;
+      hint.innerHTML = `<span>✓ ${escapeHtml(res.message)}</span>`;
     } else if (res.status === 'unknown') {
       indicator.textContent = '❓';
       indicator.classList.add('indicator-unknown');
       input.classList.add('input-warning');
-      hint.innerHTML = `<span>❓ ${res.message}</span>`;
+      hint.innerHTML = `<span>❓ ${escapeHtml(res.message)}</span>`;
     } else if (res.status === 'duplicate') {
       indicator.textContent = '⚠️';
       indicator.classList.add('indicator-duplicate');
       input.classList.add('input-warning');
       hint.classList.add('hint-error');
-      hint.innerHTML = `<span>⚠️ ${res.message}</span>`;
+      hint.innerHTML = `<span>⚠️ ${escapeHtml(res.message)}</span>`;
     } else {
       indicator.textContent = '✗';
       indicator.classList.add('indicator-invalid');
       input.classList.add('input-invalid');
       hint.classList.add('hint-error');
-      hint.innerHTML = `<span>✗ ${res.message}</span>`;
+      hint.innerHTML = `<span>✗ ${escapeHtml(res.message)}</span>`;
     }
   }
 
@@ -558,8 +569,8 @@
       const row = document.createElement('div');
       row.className = 'review-item';
       row.innerHTML = `
-        <div class="review-word-title">„${item.word}“</div>
-        <div class="review-cat-badge">კატეგორია: ${catMeta.label} (ასო: ${item.letter})</div>
+        <div class="review-word-title">„${escapeHtml(item.word)}“</div>
+        <div class="review-cat-badge">კატეგორია: ${escapeHtml(catMeta.label)} (ასო: ${escapeHtml(item.letter)})</div>
         <div class="review-decision-btns">
           <button class="btn btn-sm btn-success review-btn-approve" data-index="${index}">
             ✓ სწორია (+10/20)
@@ -685,7 +696,7 @@
       const card = document.createElement('div');
       card.className = `player-score-card ${isWinner ? 'is-winner' : ''}`;
       card.innerHTML = `
-        <div class="player-score-name">${p.avatar} ${p.name}</div>
+        <div class="player-score-name">${escapeHtml(p.avatar)} ${escapeHtml(p.name)}</div>
         <div class="player-score-pts ${isWinner ? 'winner-pts' : ''}">+${roundPts}</div>
         <div style="font-size: 0.8rem; color: var(--text-muted);">სულ: ${totalPts}</div>
       `;
@@ -698,7 +709,7 @@
         <thead>
           <tr>
             <th>კატეგორია</th>
-            ${engine.participants.map(p => `<th>${p.avatar} ${p.name}</th>`).join('')}
+            ${engine.participants.map(p => `<th>${escapeHtml(p.avatar)} ${escapeHtml(p.name)}</th>`).join('')}
           </tr>
         </thead>
         <tbody>
@@ -706,7 +717,7 @@
 
     for (const catId of engine.settings.activeCategories) {
       const catMeta = config.ALL_CATEGORIES.find(c => c.id === catId) || { label: catId, icon: '' };
-      tableHtml += `<tr><td><strong>${catMeta.icon} ${catMeta.label}</strong></td>`;
+      tableHtml += `<tr><td><strong>${catMeta.icon} ${escapeHtml(catMeta.label)}</strong></td>`;
 
       // Collect all words used by participants in this category
       const usedWordsInCat = new Set();
@@ -725,7 +736,7 @@
         };
 
         const ptClass = `pt-${catRes.points}`;
-        const wordText = catRes.word || '<span style="color:var(--text-muted);">-</span>';
+        const wordText = catRes.word ? escapeHtml(catRes.word) : '<span style="color:var(--text-muted);">-</span>';
 
         let suggestHtml = '';
         if (p.isHuman && (!catRes.isValid || catRes.points === 0 || !catRes.word)) {
@@ -733,17 +744,17 @@
           if (sug.impossible) {
             suggestHtml = `
               <div class="result-suggest-box hint-impossible">
-                ℹ️ ამ ასოზე ${catMeta.label} არ არსებობს
+                ℹ️ ამ ასოზე ${escapeHtml(catMeta.label)} არ არსებობს
               </div>
             `;
           } else if (sug.words.length > 0) {
-            const wordsList = sug.words.map(w => `<strong>${w.w}</strong>`).join(', ');
+            const wordsList = sug.words.map(w => `<strong>${escapeHtml(w.w)}</strong>`).join(', ');
             suggestHtml = `
               <div class="result-suggest-box">
                 <div class="result-suggest-title">💡 სწორი მაგალითები:</div>
                 <div class="result-suggest-words">${wordsList}</div>
                 <div style="margin-top: 3px;">
-                  <button type="button" class="btn-link lib-open-hint-btn" data-cat="${catId}" data-letter="${roundData.letter}" style="background: none; border: none; padding: 0; font-size: 0.78rem; color: var(--primary); text-decoration: underline; cursor: pointer;">
+                  <button type="button" class="btn-link lib-open-hint-btn" data-cat="${escapeHtml(catId)}" data-letter="${escapeHtml(roundData.letter)}" style="background: none; border: none; padding: 0; font-size: 0.78rem; color: var(--primary); text-decoration: underline; cursor: pointer;">
                     📚 მეტის ნახვა ბიბლიოთეკაში
                   </button>
                 </div>
@@ -836,8 +847,8 @@
       row.innerHTML = `
         <div class="leaderboard-rank">${rankEmojis[idx] || (idx + 1)}</div>
         <div class="leaderboard-user">
-          <span>${p.avatar}</span>
-          <span>${p.name} ${p.isHuman ? '(შენ)' : ''}</span>
+          <span>${escapeHtml(p.avatar)}</span>
+          <span>${escapeHtml(p.name)} ${p.isHuman ? '(შენ)' : ''}</span>
         </div>
         <div class="leaderboard-score">${score} ქულა</div>
       `;
@@ -1289,15 +1300,15 @@
     listEl.innerHTML = toShow.map(item => {
       const pop = Math.min(5, Math.max(1, item.popularity || 3));
       const stars = '★'.repeat(pop) + '☆'.repeat(5 - pop);
-      const noteHtml = item.note ? `<div class="lib-word-note">${item.note}</div>` : '';
+      const noteHtml = item.note ? `<div class="lib-word-note">${escapeHtml(item.note)}</div>` : '';
       const aliasHtml = (item.aliases && item.aliases.length > 0)
-        ? `<div class="lib-word-aliases">სინონიმები: ${item.aliases.join(', ')}</div>`
+        ? `<div class="lib-word-aliases">სინონიმები: ${item.aliases.map(escapeHtml).join(', ')}</div>`
         : '';
 
       return `
         <div class="lib-word-card">
           <div class="lib-word-header">
-            <span class="lib-word-title">${item.w}</span>
+            <span class="lib-word-title">${escapeHtml(item.w)}</span>
             <span class="lib-word-stars" title="პოპულარობა: ${pop}/5">${stars}</span>
           </div>
           ${noteHtml}
@@ -1452,10 +1463,10 @@
       card.className = 'dict-word-card';
       card.innerHTML = `
         <div>
-          <strong style="font-size: 1.05rem;">${item.word}</strong>
-          <span style="font-size: 0.8rem; color: var(--text-muted); margin-left: 8px;">(${catMeta.label})</span>
+          <strong style="font-size: 1.05rem;">${escapeHtml(item.word)}</strong>
+          <span style="font-size: 0.8rem; color: var(--text-muted); margin-left: 8px;">(${escapeHtml(catMeta.label)})</span>
         </div>
-        <button class="icon-btn btn-del-word" data-id="${item.id}" style="color: var(--danger); font-size: 1rem;">
+        <button class="icon-btn btn-del-word" data-id="${escapeHtml(item.id)}" aria-label="სიტყვის წაშლა" title="წაშლა" style="color: var(--danger); font-size: 1rem;">
           🗑️
         </button>
       `;

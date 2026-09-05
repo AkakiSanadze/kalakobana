@@ -85,6 +85,32 @@
         }
       }
     }
+
+    // Automatically index surnames and inverted names for celebrities
+    if (category === 'celebrity') {
+      const parts = mainNorm.split(' ').filter(Boolean);
+      if (parts.length === 2) {
+        const [firstName, lastName] = parts;
+        if (lastName.length >= 3) {
+          const surnameKey = `celebrity:${lastName}`;
+          if (!wordIndex.has(surnameKey)) {
+            wordIndex.set(surnameKey, payload);
+          }
+          const invertedKey = `celebrity:${lastName} ${firstName}`;
+          if (!wordIndex.has(invertedKey)) {
+            wordIndex.set(invertedKey, payload);
+          }
+        }
+      } else if (parts.length === 3) {
+        const lastName = parts[parts.length - 1];
+        if (lastName.length >= 3) {
+          const surnameKey = `celebrity:${lastName}`;
+          if (!wordIndex.has(surnameKey)) {
+            wordIndex.set(surnameKey, payload);
+          }
+        }
+      }
+    }
   }
 
   function lookupWord(category, word) {

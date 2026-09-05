@@ -10,6 +10,20 @@
   <meta name="apple-mobile-web-app-title" content="ქალაქობანა">
   <title>ქალაქობანა — ინდივიდუალური ვებ-თამაში</title>
 
+  <!-- Open Graph / Facebook / Messenger / Viber -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ქალაქობანა — კლასიკური ქართული სამაგიდო თამაში">
+  <meta property="og:description" content="ითამაშე ქალაქობანა ოფლაინ რეჟიმში ვირტუალური ბოტების წინააღმდეგ ან სოლო რეჟიმში.">
+  <meta property="og:image" content="icon.svg">
+  <meta property="og:url" content="https://kalakobana-snowy.vercel.app/">
+  <meta property="og:locale" content="ka_GE">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ქალაქობანა — ინდივიდუალური ვებ-თამაში">
+  <meta name="twitter:description" content="კლასიკური ქართული სამაგიდო თამაში ოფლაინ ბოტებთან ერთად.">
+  <meta name="twitter:image" content="icon.svg">
+
   <link rel="manifest" href="manifest.json">
   <style>
 /* ==========================================================================
@@ -166,6 +180,17 @@ button {
   touch-action: manipulation;
 }
 
+/* Accessible Focus States (a11y) */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+button:focus:not(:focus-visible),
+[role="button"]:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /* App Container */
 #app {
   width: 100%;
@@ -194,6 +219,7 @@ button {
   backdrop-filter: blur(10px);
 }
 
+button.brand,
 .brand {
   display: flex;
   align-items: center;
@@ -201,6 +227,15 @@ button {
   font-weight: 700;
   font-size: 1.25rem;
   color: var(--primary);
+  background: transparent;
+  border: none;
+  padding: 4px 6px;
+  margin-left: -6px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: inherit;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .brand-icon {
@@ -64958,6 +64993,32 @@ dialog::backdrop {
         }
       }
     }
+
+    // Automatically index surnames and inverted names for celebrities
+    if (category === 'celebrity') {
+      const parts = mainNorm.split(' ').filter(Boolean);
+      if (parts.length === 2) {
+        const [firstName, lastName] = parts;
+        if (lastName.length >= 3) {
+          const surnameKey = `celebrity:${lastName}`;
+          if (!wordIndex.has(surnameKey)) {
+            wordIndex.set(surnameKey, payload);
+          }
+          const invertedKey = `celebrity:${lastName} ${firstName}`;
+          if (!wordIndex.has(invertedKey)) {
+            wordIndex.set(invertedKey, payload);
+          }
+        }
+      } else if (parts.length === 3) {
+        const lastName = parts[parts.length - 1];
+        if (lastName.length >= 3) {
+          const surnameKey = `celebrity:${lastName}`;
+          if (!wordIndex.has(surnameKey)) {
+            wordIndex.set(surnameKey, payload);
+          }
+        }
+      }
+    }
   }
 
   function lookupWord(category, word) {
@@ -66133,10 +66194,10 @@ dialog::backdrop {
   <div id="app">
     <!-- Top Navigation Bar -->
     <header class="app-topbar">
-      <div class="brand" id="brand-home-btn" role="button" tabindex="0" title="მთავარი გვერდი">
+      <button type="button" class="brand" id="brand-home-btn" title="მთავარი გვერდი" aria-label="მთავარი გვერდი">
         <span class="brand-icon">🇬🇪</span>
         <span class="brand-text">ქალაქობანა</span>
-      </div>
+      </button>
       <div class="topbar-actions">
         <button id="btn-sound-toggle" class="icon-btn" title="ხმის ჩართვა/გამორთვა" aria-label="ხმის ჩართვა/გამორთვა">
           <span id="sound-icon">🔊</span>
@@ -66224,7 +66285,7 @@ dialog::backdrop {
         </div>
 
         <div class="round-header-actions" style="display: flex; align-items: center; gap: 8px;">
-          <div class="timer-widget" id="timer-widget">
+          <div class="timer-widget" id="timer-widget" role="timer" aria-label="დარჩენილი დრო">
             <div class="timer-svg-wrap">
               <svg class="timer-svg" viewBox="0 0 46 46">
                 <circle class="timer-bg-circle" cx="23" cy="23" r="19"></circle>
@@ -66461,12 +66522,12 @@ dialog::backdrop {
 
         <div id="dict-add-form" style="display: none; background: var(--bg-app); padding: 12px; border-radius: var(--radius-sm); margin-bottom: 12px;">
           <div style="margin-bottom: 8px;">
-            <select id="dict-add-category" class="word-input" style="padding: 8px;">
+            <select id="dict-add-category" class="word-input" aria-label="კატეგორია" style="padding: 8px;">
               <!-- categories -->
             </select>
           </div>
           <div style="margin-bottom: 8px;">
-            <input type="text" id="dict-add-word" class="word-input" placeholder="სიტყვა (მაგ. თბილისი)" style="padding: 8px;">
+            <input type="text" id="dict-add-word" class="word-input" placeholder="სიტყვა (მაგ. თბილისი)" aria-label="ახალი სიტყვა" style="padding: 8px;">
           </div>
           <button id="btn-dict-save-new-word" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">შენახვა</button>
         </div>
@@ -66498,6 +66559,8 @@ dialog::backdrop {
         </ul>
         <br>
         <p><strong>💡 რჩევა:</strong> შეარჩიეთ იშვიათი და უჩვეულო სიტყვები, რათა ბოტებს არ დაემთხვეს და მიიღოთ 10 ან 20 ქულა!</p>
+        <br>
+        <p><strong>⭐ ცნობილი ადამიანი:</strong> შეგიძლიათ ჩაწეროთ როგორც <strong>სახელით</strong> (მაგ. „ილია ჭავჭავაძე“ ასო <strong>ი</strong>-ზე), ისე მხოლოდ <strong>გვარით</strong> (მაგ. „ჭავჭავაძე“ ასო <strong>ჭ</strong>-ზე). მთავარია, თქვენ მიერ ჩაწერილი სიტყვა იწყებოდეს რაუნდის ასოზე!</p>
       </div>
     </dialog>
   </div>
@@ -66525,6 +66588,17 @@ dialog::backdrop {
   let gameEngine = null;
   let activeInputs = {};
   let debounceTimers = {};
+
+  // HTML sanitization helper to neutralize XSS in dynamic content
+  function escapeHtml(str) {
+    if (str == null) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
 
   // DOM Elements
   const screens = {
@@ -66942,30 +67016,30 @@ dialog::backdrop {
     if (res.status === 'empty') {
       indicator.textContent = '⚪';
       const catMeta = config.ALL_CATEGORIES.find(c => c.id === catId);
-      hint.innerHTML = `<span>${catMeta ? catMeta.description : ''}</span>`;
+      hint.innerHTML = `<span>${catMeta ? escapeHtml(catMeta.description) : ''}</span>`;
     } else if (res.status === 'valid') {
       indicator.textContent = '✓';
       indicator.classList.add('indicator-valid');
       input.classList.add('input-valid');
       hint.classList.add('hint-success');
-      hint.innerHTML = `<span>✓ ${res.message}</span>`;
+      hint.innerHTML = `<span>✓ ${escapeHtml(res.message)}</span>`;
     } else if (res.status === 'unknown') {
       indicator.textContent = '❓';
       indicator.classList.add('indicator-unknown');
       input.classList.add('input-warning');
-      hint.innerHTML = `<span>❓ ${res.message}</span>`;
+      hint.innerHTML = `<span>❓ ${escapeHtml(res.message)}</span>`;
     } else if (res.status === 'duplicate') {
       indicator.textContent = '⚠️';
       indicator.classList.add('indicator-duplicate');
       input.classList.add('input-warning');
       hint.classList.add('hint-error');
-      hint.innerHTML = `<span>⚠️ ${res.message}</span>`;
+      hint.innerHTML = `<span>⚠️ ${escapeHtml(res.message)}</span>`;
     } else {
       indicator.textContent = '✗';
       indicator.classList.add('indicator-invalid');
       input.classList.add('input-invalid');
       hint.classList.add('hint-error');
-      hint.innerHTML = `<span>✗ ${res.message}</span>`;
+      hint.innerHTML = `<span>✗ ${escapeHtml(res.message)}</span>`;
     }
   }
 
@@ -67064,8 +67138,8 @@ dialog::backdrop {
       const row = document.createElement('div');
       row.className = 'review-item';
       row.innerHTML = `
-        <div class="review-word-title">„${item.word}“</div>
-        <div class="review-cat-badge">კატეგორია: ${catMeta.label} (ასო: ${item.letter})</div>
+        <div class="review-word-title">„${escapeHtml(item.word)}“</div>
+        <div class="review-cat-badge">კატეგორია: ${escapeHtml(catMeta.label)} (ასო: ${escapeHtml(item.letter)})</div>
         <div class="review-decision-btns">
           <button class="btn btn-sm btn-success review-btn-approve" data-index="${index}">
             ✓ სწორია (+10/20)
@@ -67191,7 +67265,7 @@ dialog::backdrop {
       const card = document.createElement('div');
       card.className = `player-score-card ${isWinner ? 'is-winner' : ''}`;
       card.innerHTML = `
-        <div class="player-score-name">${p.avatar} ${p.name}</div>
+        <div class="player-score-name">${escapeHtml(p.avatar)} ${escapeHtml(p.name)}</div>
         <div class="player-score-pts ${isWinner ? 'winner-pts' : ''}">+${roundPts}</div>
         <div style="font-size: 0.8rem; color: var(--text-muted);">სულ: ${totalPts}</div>
       `;
@@ -67204,7 +67278,7 @@ dialog::backdrop {
         <thead>
           <tr>
             <th>კატეგორია</th>
-            ${engine.participants.map(p => `<th>${p.avatar} ${p.name}</th>`).join('')}
+            ${engine.participants.map(p => `<th>${escapeHtml(p.avatar)} ${escapeHtml(p.name)}</th>`).join('')}
           </tr>
         </thead>
         <tbody>
@@ -67212,7 +67286,7 @@ dialog::backdrop {
 
     for (const catId of engine.settings.activeCategories) {
       const catMeta = config.ALL_CATEGORIES.find(c => c.id === catId) || { label: catId, icon: '' };
-      tableHtml += `<tr><td><strong>${catMeta.icon} ${catMeta.label}</strong></td>`;
+      tableHtml += `<tr><td><strong>${catMeta.icon} ${escapeHtml(catMeta.label)}</strong></td>`;
 
       // Collect all words used by participants in this category
       const usedWordsInCat = new Set();
@@ -67231,7 +67305,7 @@ dialog::backdrop {
         };
 
         const ptClass = `pt-${catRes.points}`;
-        const wordText = catRes.word || '<span style="color:var(--text-muted);">-</span>';
+        const wordText = catRes.word ? escapeHtml(catRes.word) : '<span style="color:var(--text-muted);">-</span>';
 
         let suggestHtml = '';
         if (p.isHuman && (!catRes.isValid || catRes.points === 0 || !catRes.word)) {
@@ -67239,17 +67313,17 @@ dialog::backdrop {
           if (sug.impossible) {
             suggestHtml = `
               <div class="result-suggest-box hint-impossible">
-                ℹ️ ამ ასოზე ${catMeta.label} არ არსებობს
+                ℹ️ ამ ასოზე ${escapeHtml(catMeta.label)} არ არსებობს
               </div>
             `;
           } else if (sug.words.length > 0) {
-            const wordsList = sug.words.map(w => `<strong>${w.w}</strong>`).join(', ');
+            const wordsList = sug.words.map(w => `<strong>${escapeHtml(w.w)}</strong>`).join(', ');
             suggestHtml = `
               <div class="result-suggest-box">
                 <div class="result-suggest-title">💡 სწორი მაგალითები:</div>
                 <div class="result-suggest-words">${wordsList}</div>
                 <div style="margin-top: 3px;">
-                  <button type="button" class="btn-link lib-open-hint-btn" data-cat="${catId}" data-letter="${roundData.letter}" style="background: none; border: none; padding: 0; font-size: 0.78rem; color: var(--primary); text-decoration: underline; cursor: pointer;">
+                  <button type="button" class="btn-link lib-open-hint-btn" data-cat="${escapeHtml(catId)}" data-letter="${escapeHtml(roundData.letter)}" style="background: none; border: none; padding: 0; font-size: 0.78rem; color: var(--primary); text-decoration: underline; cursor: pointer;">
                     📚 მეტის ნახვა ბიბლიოთეკაში
                   </button>
                 </div>
@@ -67342,8 +67416,8 @@ dialog::backdrop {
       row.innerHTML = `
         <div class="leaderboard-rank">${rankEmojis[idx] || (idx + 1)}</div>
         <div class="leaderboard-user">
-          <span>${p.avatar}</span>
-          <span>${p.name} ${p.isHuman ? '(შენ)' : ''}</span>
+          <span>${escapeHtml(p.avatar)}</span>
+          <span>${escapeHtml(p.name)} ${p.isHuman ? '(შენ)' : ''}</span>
         </div>
         <div class="leaderboard-score">${score} ქულა</div>
       `;
@@ -67795,15 +67869,15 @@ dialog::backdrop {
     listEl.innerHTML = toShow.map(item => {
       const pop = Math.min(5, Math.max(1, item.popularity || 3));
       const stars = '★'.repeat(pop) + '☆'.repeat(5 - pop);
-      const noteHtml = item.note ? `<div class="lib-word-note">${item.note}</div>` : '';
+      const noteHtml = item.note ? `<div class="lib-word-note">${escapeHtml(item.note)}</div>` : '';
       const aliasHtml = (item.aliases && item.aliases.length > 0)
-        ? `<div class="lib-word-aliases">სინონიმები: ${item.aliases.join(', ')}</div>`
+        ? `<div class="lib-word-aliases">სინონიმები: ${item.aliases.map(escapeHtml).join(', ')}</div>`
         : '';
 
       return `
         <div class="lib-word-card">
           <div class="lib-word-header">
-            <span class="lib-word-title">${item.w}</span>
+            <span class="lib-word-title">${escapeHtml(item.w)}</span>
             <span class="lib-word-stars" title="პოპულარობა: ${pop}/5">${stars}</span>
           </div>
           ${noteHtml}
@@ -67958,10 +68032,10 @@ dialog::backdrop {
       card.className = 'dict-word-card';
       card.innerHTML = `
         <div>
-          <strong style="font-size: 1.05rem;">${item.word}</strong>
-          <span style="font-size: 0.8rem; color: var(--text-muted); margin-left: 8px;">(${catMeta.label})</span>
+          <strong style="font-size: 1.05rem;">${escapeHtml(item.word)}</strong>
+          <span style="font-size: 0.8rem; color: var(--text-muted); margin-left: 8px;">(${escapeHtml(catMeta.label)})</span>
         </div>
-        <button class="icon-btn btn-del-word" data-id="${item.id}" style="color: var(--danger); font-size: 1rem;">
+        <button class="icon-btn btn-del-word" data-id="${escapeHtml(item.id)}" aria-label="სიტყვის წაშლა" title="წაშლა" style="color: var(--danger); font-size: 1rem;">
           🗑️
         </button>
       `;

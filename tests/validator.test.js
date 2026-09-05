@@ -96,3 +96,52 @@ test('validateInput rules: too short, wrong letter, duplicate, strict, self, fre
   const freeRes = validator.validateInput({ category: 'city', word: 'თელავი', letter: 'თ', mode: 'free' });
   assert.strictEqual(freeRes.status, 'valid');
 });
+
+test('Celebrity smart indexing: allows surname and inverted full name lookup', () => {
+  const mockDatasets = {
+    celebrity: {
+      category: 'celebrity',
+      words: [
+        { w: 'გალაკტიონ ტაბიძე', popularity: 5, aliases: [], note: 'პოეტი' },
+        { w: 'არტურ კონან დოილი', popularity: 4, aliases: [], note: 'მწერალი' }
+      ]
+    }
+  };
+  validator.initIndex(mockDatasets);
+
+  // Direct first name start
+  const direct = validator.lookupWord('celebrity', 'გალაკტიონ ტაბიძე');
+  assert.ok(direct);
+  assert.strictEqual(direct.w, 'გალაკტიონ ტაბიძე');
+
+  // Surname only
+  const surnameMatch = validator.lookupWord('celebrity', 'ტაბიძე');
+  assert.ok(surnameMatch, 'Surname ტაბიძე should be found');
+  assert.strictEqual(surnameMatch.w, 'გალაკტიონ ტაბიძე');
+
+  // Inverted name
+  const invertedMatch = validator.lookupWord('celebrity', 'ტაბიძე გალაკტიონ');
+  assert.ok(invertedMatch, 'Inverted ტაბიძე გალაკტიონ should be found');
+
+  // 3-word surname
+  const doyle = validator.lookupWord('celebrity', 'დოილი');
+  assert.ok(doyle, 'Surname დოილი should be found');
+
+  // Validate on letter ტ with surname ტაბიძე
+  const validOnT = validator.validateInput({
+    category: 'celebrity',
+    word: 'ტაბიძე',
+    letter: 'ტ',
+    mode: 'strict'
+  });
+  assert.strictEqual(validOnT.status, 'valid');
+
+  // Validate on letter გ with full name
+  const validOnG = validator.validateInput({
+    category: 'celebrity',
+    word: 'გალაკტიონ ტაბიძე',
+    letter: 'გ',
+    mode: 'strict'
+  });
+  assert.strictEqual(validOnG.status, 'valid');
+});

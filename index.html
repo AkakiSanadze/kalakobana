@@ -10,6 +10,20 @@
   <meta name="apple-mobile-web-app-title" content="ქალაქობანა">
   <title>ქალაქობანა — ინდივიდუალური ვებ-თამაში</title>
 
+  <!-- Open Graph / Facebook / Messenger / Viber -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ქალაქობანა — კლასიკური ქართული სამაგიდო თამაში">
+  <meta property="og:description" content="ითამაშე ქალაქობანა ოფლაინ რეჟიმში ვირტუალური ბოტების წინააღმდეგ ან სოლო რეჟიმში.">
+  <meta property="og:image" content="icon.svg">
+  <meta property="og:url" content="https://kalakobana-snowy.vercel.app/">
+  <meta property="og:locale" content="ka_GE">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ქალაქობანა — ინდივიდუალური ვებ-თამაში">
+  <meta name="twitter:description" content="კლასიკური ქართული სამაგიდო თამაში ოფლაინ ბოტებთან ერთად.">
+  <meta name="twitter:image" content="icon.svg">
+
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="css/style.css">
 
@@ -45,10 +59,10 @@
   <div id="app">
     <!-- Top Navigation Bar -->
     <header class="app-topbar">
-      <div class="brand" id="brand-home-btn" role="button" tabindex="0" title="მთავარი გვერდი">
+      <button type="button" class="brand" id="brand-home-btn" title="მთავარი გვერდი" aria-label="მთავარი გვერდი">
         <span class="brand-icon">🇬🇪</span>
         <span class="brand-text">ქალაქობანა</span>
-      </div>
+      </button>
       <div class="topbar-actions">
         <button id="btn-sound-toggle" class="icon-btn" title="ხმის ჩართვა/გამორთვა" aria-label="ხმის ჩართვა/გამორთვა">
           <span id="sound-icon">🔊</span>
@@ -136,7 +150,7 @@
         </div>
 
         <div class="round-header-actions" style="display: flex; align-items: center; gap: 8px;">
-          <div class="timer-widget" id="timer-widget">
+          <div class="timer-widget" id="timer-widget" role="timer" aria-label="დარჩენილი დრო">
             <div class="timer-svg-wrap">
               <svg class="timer-svg" viewBox="0 0 46 46">
                 <circle class="timer-bg-circle" cx="23" cy="23" r="19"></circle>
@@ -373,12 +387,12 @@
 
         <div id="dict-add-form" style="display: none; background: var(--bg-app); padding: 12px; border-radius: var(--radius-sm); margin-bottom: 12px;">
           <div style="margin-bottom: 8px;">
-            <select id="dict-add-category" class="word-input" style="padding: 8px;">
+            <select id="dict-add-category" class="word-input" aria-label="კატეგორია" style="padding: 8px;">
               <!-- categories -->
             </select>
           </div>
           <div style="margin-bottom: 8px;">
-            <input type="text" id="dict-add-word" class="word-input" placeholder="სიტყვა (მაგ. თბილისი)" style="padding: 8px;">
+            <input type="text" id="dict-add-word" class="word-input" placeholder="სიტყვა (მაგ. თბილისი)" aria-label="ახალი სიტყვა" style="padding: 8px;">
           </div>
           <button id="btn-dict-save-new-word" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">შენახვა</button>
         </div>
@@ -410,6 +424,8 @@
         </ul>
         <br>
         <p><strong>💡 რჩევა:</strong> შეარჩიეთ იშვიათი და უჩვეულო სიტყვები, რათა ბოტებს არ დაემთხვეს და მიიღოთ 10 ან 20 ქულა!</p>
+        <br>
+        <p><strong>⭐ ცნობილი ადამიანი:</strong> შეგიძლიათ ჩაწეროთ როგორც <strong>სახელით</strong> (მაგ. „ილია ჭავჭავაძე“ ასო <strong>ი</strong>-ზე), ისე მხოლოდ <strong>გვარით</strong> (მაგ. „ჭავჭავაძე“ ასო <strong>ჭ</strong>-ზე). მთავარია, თქვენ მიერ ჩაწერილი სიტყვა იწყებოდეს რაუნდის ასოზე!</p>
       </div>
     </dialog>
   </div>

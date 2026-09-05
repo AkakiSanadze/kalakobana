@@ -152,6 +152,17 @@ button {
   touch-action: manipulation;
 }
 
+/* Accessible Focus States (a11y) */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+button:focus:not(:focus-visible),
+[role="button"]:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /* App Container */
 #app {
   width: 100%;
@@ -180,6 +191,7 @@ button {
   backdrop-filter: blur(10px);
 }
 
+button.brand,
 .brand {
   display: flex;
   align-items: center;
@@ -187,6 +199,15 @@ button {
   font-weight: 700;
   font-size: 1.25rem;
   color: var(--primary);
+  background: transparent;
+  border: none;
+  padding: 4px 6px;
+  margin-left: -6px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: inherit;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .brand-icon {
