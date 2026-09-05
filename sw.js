@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kalakobana-v11';
+const CACHE_NAME = 'kalakobana-v12';
 
 const ASSETS_TO_CACHE = [
   './',

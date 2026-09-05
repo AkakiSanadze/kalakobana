@@ -97,31 +97,31 @@ test('validateInput rules: too short, wrong letter, duplicate, strict, self, fre
   assert.strictEqual(freeRes.status, 'valid');
 });
 
-test('Celebrity smart indexing: allows surname and inverted full name lookup', () => {
+test('Celebrity surname-first standard: allows surname, full surname+name, and name+surname lookup', () => {
   const mockDatasets = {
     celebrity: {
       category: 'celebrity',
       words: [
-        { w: 'გალაკტიონ ტაბიძე', popularity: 5, aliases: [], note: 'პოეტი' },
-        { w: 'არტურ კონან დოილი', popularity: 4, aliases: [], note: 'მწერალი' }
+        { w: 'ტაბიძე გალაკტიონ', popularity: 5, aliases: ['ტაბიძე', 'გალაკტიონ ტაბიძე'], note: 'პოეტი' },
+        { w: 'დოილი არტურ კონან', popularity: 4, aliases: ['დოილი', 'არტურ კონან დოილი'], note: 'მწერალი' }
       ]
     }
   };
   validator.initIndex(mockDatasets);
 
-  // Direct first name start
-  const direct = validator.lookupWord('celebrity', 'გალაკტიონ ტაბიძე');
+  // Direct surname-first start
+  const direct = validator.lookupWord('celebrity', 'ტაბიძე გალაკტიონ');
   assert.ok(direct);
-  assert.strictEqual(direct.w, 'გალაკტიონ ტაბიძე');
+  assert.strictEqual(direct.w, 'ტაბიძე გალაკტიონ');
 
   // Surname only
   const surnameMatch = validator.lookupWord('celebrity', 'ტაბიძე');
   assert.ok(surnameMatch, 'Surname ტაბიძე should be found');
-  assert.strictEqual(surnameMatch.w, 'გალაკტიონ ტაბიძე');
+  assert.strictEqual(surnameMatch.w, 'ტაბიძე გალაკტიონ');
 
-  // Inverted name
-  const invertedMatch = validator.lookupWord('celebrity', 'ტაბიძე გალაკტიონ');
-  assert.ok(invertedMatch, 'Inverted ტაბიძე გალაკტიონ should be found');
+  // Natural name order
+  const naturalMatch = validator.lookupWord('celebrity', 'გალაკტიონ ტაბიძე');
+  assert.ok(naturalMatch, 'Natural გალაკტიონ ტაბიძე should be found');
 
   // 3-word surname
   const doyle = validator.lookupWord('celebrity', 'დოილი');
@@ -136,7 +136,16 @@ test('Celebrity smart indexing: allows surname and inverted full name lookup', (
   });
   assert.strictEqual(validOnT.status, 'valid');
 
-  // Validate on letter გ with full name
+  // Validate on letter ტ with surname+name
+  const validOnTFull = validator.validateInput({
+    category: 'celebrity',
+    word: 'ტაბიძე გალაკტიონ',
+    letter: 'ტ',
+    mode: 'strict'
+  });
+  assert.strictEqual(validOnTFull.status, 'valid');
+
+  // Validate on letter გ with natural name (alias)
   const validOnG = validator.validateInput({
     category: 'celebrity',
     word: 'გალაკტიონ ტაბიძე',
