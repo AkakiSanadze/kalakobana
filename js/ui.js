@@ -1082,6 +1082,14 @@
 
     if (!tabLib || !tabCustom || !viewLib || !viewCustom) return;
 
+    let totalBaseWords = 0;
+    config.ALL_CATEGORIES.forEach(cat => {
+      if (datasets[cat.id] && Array.isArray(datasets[cat.id].words)) {
+        totalBaseWords += datasets[cat.id].words.length;
+      }
+    });
+    tabLib.textContent = `📚 მთავარი ბაზა (${totalBaseWords.toLocaleString('ka-GE')})`;
+
     tabLib.onclick = () => {
       tabLib.classList.add('active');
       tabCustom.classList.remove('active');

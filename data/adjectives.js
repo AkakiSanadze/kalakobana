@@ -10,7 +10,7 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function() {
   return {
     category: "adjective",
-    label: "ფერი / თვისება",
+    label: "ზედსართავი სახელი",
     words: [
   {
     "w": "აგრესიული",
@@ -2109,12 +2109,6 @@
     "note": "წითელ-ყავისფერი ფერი"
   },
   {
-    "w": "ჟილკიანი",
-    "popularity": 4,
-    "aliases": [],
-    "note": ""
-  },
-  {
     "w": "ჟინიანი",
     "popularity": 4,
     "aliases": [],
@@ -3057,13 +3051,13 @@
     "note": "ნათელი ფერი ან ხასიათი"
   },
   {
-    "w": "ღია-ლურჯი",
+    "w": "ღია ლურჯი",
     "popularity": 4,
     "aliases": [],
     "note": ""
   },
   {
-    "w": "ღია-მწვანე",
+    "w": "ღია მწვანე",
     "popularity": 4,
     "aliases": [],
     "note": ""
@@ -3345,7 +3339,7 @@
     "note": ""
   },
   {
-    "w": "ძალუმად",
+    "w": "ძალუმი",
     "popularity": 4,
     "aliases": [],
     "note": ""
@@ -3480,12 +3474,6 @@
   },
   {
     "w": "ჭუჭყიანი",
-    "popularity": 4,
-    "aliases": [],
-    "note": ""
-  },
-  {
-    "w": "ჭყლიაპა",
     "popularity": 4,
     "aliases": [],
     "note": ""

@@ -8905,22 +8905,10 @@
     "note": "კაცის სახელი"
   },
   {
-    "w": "ღვთისმშობელი",
-    "popularity": 4,
-    "aliases": [],
-    "note": ""
-  },
-  {
     "w": "ღვთისო",
     "popularity": 4,
     "aliases": [],
     "note": "კაცის სახელი"
-  },
-  {
-    "w": "ღია",
-    "popularity": 3,
-    "aliases": [],
-    "note": "სახელი"
   },
   {
     "w": "ღუდუშა",
@@ -8941,22 +8929,10 @@
     "note": ""
   },
   {
-    "w": "ყაზბეგ",
-    "popularity": 4,
-    "aliases": [],
-    "note": "კაცის სახელი"
-  },
-  {
     "w": "ყაზბეგა",
     "popularity": 3,
     "aliases": [],
     "note": "კაცის სახელი"
-  },
-  {
-    "w": "ყაზბეგი",
-    "popularity": 4,
-    "aliases": [],
-    "note": ""
   },
   {
     "w": "ყარამან",
@@ -8987,18 +8963,6 @@
     "popularity": 4,
     "aliases": [],
     "note": "კაცის სახელი"
-  },
-  {
-    "w": "ყისმათ",
-    "popularity": 2,
-    "aliases": [],
-    "note": "სახელი"
-  },
-  {
-    "w": "ყურშა",
-    "popularity": 4,
-    "aliases": [],
-    "note": ""
   },
   {
     "w": "შალვა",
@@ -9105,12 +9069,6 @@
       "შოთიკო"
     ],
     "note": "კაცის სახელი"
-  },
-  {
-    "w": "შოთა-მამუკა",
-    "popularity": 4,
-    "aliases": [],
-    "note": ""
   },
   {
     "w": "შოთიკოშკა",
@@ -9381,12 +9339,6 @@
     "note": "კაცის სახელი"
   },
   {
-    "w": "ძაბირ",
-    "popularity": 3,
-    "aliases": [],
-    "note": "კაცის სახელი"
-  },
-  {
     "w": "ძაბუ",
     "popularity": 4,
     "aliases": [],
@@ -9411,28 +9363,10 @@
     "note": ""
   },
   {
-    "w": "ძაძუკიკო",
-    "popularity": 4,
-    "aliases": [],
-    "note": ""
-  },
-  {
-    "w": "ძველი",
-    "popularity": 4,
-    "aliases": [],
-    "note": ""
-  },
-  {
     "w": "ძიძია",
     "popularity": 3,
     "aliases": [],
     "note": "ქალის სახელი"
-  },
-  {
-    "w": "ძმობისა",
-    "popularity": 4,
-    "aliases": [],
-    "note": ""
   },
   {
     "w": "ძნელა",
@@ -9459,42 +9393,6 @@
     "note": ""
   },
   {
-    "w": "წერეთელ",
-    "popularity": 4,
-    "aliases": [],
-    "note": ""
-  },
-  {
-    "w": "წია",
-    "popularity": 3,
-    "aliases": [],
-    "note": "ქალის სახელი"
-  },
-  {
-    "w": "წითელა",
-    "popularity": 2,
-    "aliases": [],
-    "note": "სახელი"
-  },
-  {
-    "w": "წიქარა",
-    "popularity": 3,
-    "aliases": [],
-    "note": "სახელი"
-  },
-  {
-    "w": "წმინდა",
-    "popularity": 2,
-    "aliases": [],
-    "note": "სახელი"
-  },
-  {
-    "w": "წმინდანი",
-    "popularity": 2,
-    "aliases": [],
-    "note": "სახელი"
-  },
-  {
     "w": "წყალობა",
     "popularity": 4,
     "aliases": [],
@@ -9509,12 +9407,6 @@
     "note": "კაცის სახელი"
   },
   {
-    "w": "ჭაბუკიკო",
-    "popularity": 4,
-    "aliases": [],
-    "note": ""
-  },
-  {
     "w": "ჭიჭიკია",
     "popularity": 3,
     "aliases": [],
@@ -9527,12 +9419,6 @@
     "note": "კაცის სახელი"
   },
   {
-    "w": "ჭიჭიკოშკა",
-    "popularity": 4,
-    "aliases": [],
-    "note": ""
-  },
-  {
     "w": "ჭიჭინა",
     "popularity": 3,
     "aliases": [],
@@ -9543,12 +9429,6 @@
     "popularity": 3,
     "aliases": [],
     "note": "კაცის სახელი"
-  },
-  {
-    "w": "ჭუჭულა",
-    "popularity": 4,
-    "aliases": [],
-    "note": ""
   },
   {
     "w": "ხავიერ",
