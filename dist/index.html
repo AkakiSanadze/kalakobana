@@ -678,6 +678,32 @@ button {
   z-index: 95;
   display: flex;
   justify-content: center;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+  will-change: transform, opacity;
+}
+
+/* When virtual keyboard opens on mobile, hide floating bottom bar completely so it never covers inputs! */
+#app:has(.word-input:focus) .round-bottom-bar,
+body.keyboard-open .round-bottom-bar {
+  transform: translateY(120%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+body.keyboard-open .categories-list {
+  margin-bottom: 24px;
+}
+
+.header-finish-btn {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  border-radius: var(--radius-full);
+}
+
+.header-finish-btn.all-filled {
+  animation: pulseButton 1s infinite alternate ease-in-out;
+  background: var(--success);
 }
 
 .bottom-bar-inner {
@@ -28880,14 +28906,19 @@ dialog::backdrop {
           </div>
         </div>
 
-        <div class="timer-widget" id="timer-widget">
-          <div class="timer-svg-wrap">
-            <svg class="timer-svg" viewBox="0 0 46 46">
-              <circle class="timer-bg-circle" cx="23" cy="23" r="19"></circle>
-              <circle class="timer-prog-circle" id="timer-prog-circle" cx="23" cy="23" r="19" stroke-dasharray="119.38" stroke-dashoffset="0"></circle>
-            </svg>
-            <span class="timer-digits" id="timer-digits">90</span>
+        <div class="round-header-actions" style="display: flex; align-items: center; gap: 8px;">
+          <div class="timer-widget" id="timer-widget">
+            <div class="timer-svg-wrap">
+              <svg class="timer-svg" viewBox="0 0 46 46">
+                <circle class="timer-bg-circle" cx="23" cy="23" r="19"></circle>
+                <circle class="timer-prog-circle" id="timer-prog-circle" cx="23" cy="23" r="19" stroke-dasharray="119.38" stroke-dashoffset="0"></circle>
+              </svg>
+              <span class="timer-digits" id="timer-digits">90</span>
+            </div>
           </div>
+          <button id="btn-finish-round-header" class="btn btn-primary header-finish-btn" title="რაუნდის დასრულება">
+            ✓ დავასრულე
+          </button>
         </div>
       </div>
 
@@ -29530,11 +29561,21 @@ dialog::backdrop {
       progressEl.textContent = `${filled}/${cats.length}`;
     }
 
+    const headerFinishBtn = document.getElementById('btn-finish-round-header');
+
     if (finishBtn) {
       if (filled === cats.length) {
         finishBtn.classList.add('all-filled');
       } else {
         finishBtn.classList.remove('all-filled');
+      }
+    }
+
+    if (headerFinishBtn) {
+      if (filled === cats.length) {
+        headerFinishBtn.classList.add('all-filled');
+      } else {
+        headerFinishBtn.classList.remove('all-filled');
       }
     }
   }
@@ -29564,9 +29605,14 @@ dialog::backdrop {
   }
 
   function setupRoundEvents() {
-    document.getElementById('btn-finish-round-early').addEventListener('click', () => {
+    const finishAction = () => {
       gameEngine.playerFinishEarly();
-    });
+    };
+    document.getElementById('btn-finish-round-early').addEventListener('click', finishAction);
+    const headerFinishBtn = document.getElementById('btn-finish-round-header');
+    if (headerFinishBtn) {
+      headerFinishBtn.addEventListener('click', finishAction);
+    }
   }
 
   // --- Review Screen (Self-Confirmation) ---
@@ -30142,23 +30188,32 @@ dialog::backdrop {
 
   // --- Virtual Keyboard Safety ---
   function setupVirtualKeyboardSafety() {
-    // When virtual keyboard opens on mobile, prevent sticky bar from covering focused inputs
+    let scrollTimeout = null;
+
     document.addEventListener('focusin', (e) => {
       if (e.target && e.target.classList.contains('word-input')) {
-        setTimeout(() => {
+        document.body.classList.add('keyboard-open');
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
           e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 250);
+        }, 150);
       }
     });
 
-    // visualViewport handling
+    document.addEventListener('focusout', (e) => {
+      if (e.target && e.target.classList.contains('word-input')) {
+        setTimeout(() => {
+          if (!document.activeElement || !document.activeElement.classList.contains('word-input')) {
+            document.body.classList.remove('keyboard-open');
+          }
+        }, 120);
+      }
+    });
+
     if (window.visualViewport) {
       window.visualViewport.addEventListener('resize', () => {
-        const bottomBar = document.querySelector('.round-bottom-bar');
-        if (bottomBar && gameEngine && gameEngine.state === 'ROUND_ACTIVE') {
-          // Keep bottom bar above keyboard
-          const keyboardHeight = window.innerHeight - window.visualViewport.height;
-          bottomBar.style.transform = keyboardHeight > 50 ? `translateY(-${keyboardHeight}px)` : '';
+        if (!document.activeElement || !document.activeElement.classList.contains('word-input')) {
+          document.body.classList.remove('keyboard-open');
         }
       });
     }

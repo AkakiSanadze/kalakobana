@@ -664,6 +664,32 @@ button {
   z-index: 95;
   display: flex;
   justify-content: center;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+  will-change: transform, opacity;
+}
+
+/* When virtual keyboard opens on mobile, hide floating bottom bar completely so it never covers inputs! */
+#app:has(.word-input:focus) .round-bottom-bar,
+body.keyboard-open .round-bottom-bar {
+  transform: translateY(120%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+body.keyboard-open .categories-list {
+  margin-bottom: 24px;
+}
+
+.header-finish-btn {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  border-radius: var(--radius-full);
+}
+
+.header-finish-btn.all-filled {
+  animation: pulseButton 1s infinite alternate ease-in-out;
+  background: var(--success);
 }
 
 .bottom-bar-inner {

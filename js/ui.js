@@ -413,11 +413,21 @@
       progressEl.textContent = `${filled}/${cats.length}`;
     }
 
+    const headerFinishBtn = document.getElementById('btn-finish-round-header');
+
     if (finishBtn) {
       if (filled === cats.length) {
         finishBtn.classList.add('all-filled');
       } else {
         finishBtn.classList.remove('all-filled');
+      }
+    }
+
+    if (headerFinishBtn) {
+      if (filled === cats.length) {
+        headerFinishBtn.classList.add('all-filled');
+      } else {
+        headerFinishBtn.classList.remove('all-filled');
       }
     }
   }
@@ -447,9 +457,14 @@
   }
 
   function setupRoundEvents() {
-    document.getElementById('btn-finish-round-early').addEventListener('click', () => {
+    const finishAction = () => {
       gameEngine.playerFinishEarly();
-    });
+    };
+    document.getElementById('btn-finish-round-early').addEventListener('click', finishAction);
+    const headerFinishBtn = document.getElementById('btn-finish-round-header');
+    if (headerFinishBtn) {
+      headerFinishBtn.addEventListener('click', finishAction);
+    }
   }
 
   // --- Review Screen (Self-Confirmation) ---
@@ -1025,23 +1040,32 @@
 
   // --- Virtual Keyboard Safety ---
   function setupVirtualKeyboardSafety() {
-    // When virtual keyboard opens on mobile, prevent sticky bar from covering focused inputs
+    let scrollTimeout = null;
+
     document.addEventListener('focusin', (e) => {
       if (e.target && e.target.classList.contains('word-input')) {
-        setTimeout(() => {
+        document.body.classList.add('keyboard-open');
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
           e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 250);
+        }, 150);
       }
     });
 
-    // visualViewport handling
+    document.addEventListener('focusout', (e) => {
+      if (e.target && e.target.classList.contains('word-input')) {
+        setTimeout(() => {
+          if (!document.activeElement || !document.activeElement.classList.contains('word-input')) {
+            document.body.classList.remove('keyboard-open');
+          }
+        }, 120);
+      }
+    });
+
     if (window.visualViewport) {
       window.visualViewport.addEventListener('resize', () => {
-        const bottomBar = document.querySelector('.round-bottom-bar');
-        if (bottomBar && gameEngine && gameEngine.state === 'ROUND_ACTIVE') {
-          // Keep bottom bar above keyboard
-          const keyboardHeight = window.innerHeight - window.visualViewport.height;
-          bottomBar.style.transform = keyboardHeight > 50 ? `translateY(-${keyboardHeight}px)` : '';
+        if (!document.activeElement || !document.activeElement.classList.contains('word-input')) {
+          document.body.classList.remove('keyboard-open');
         }
       });
     }
