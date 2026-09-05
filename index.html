@@ -363,12 +363,18 @@
   <!-- Main UI Controller Application Script -->
   <script src="js/ui.js"></script>
 
-  <!-- PWA Service Worker Registration -->
+  <!-- PWA Service Worker Registration with Auto-Update -->
   <script>
     if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(err => {
+        navigator.serviceWorker.register('./sw.js').then((reg) => {
+          reg.update();
+        }).catch(err => {
           console.warn('SW registration failed:', err);
+        });
+
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          window.location.reload();
         });
       });
     }
