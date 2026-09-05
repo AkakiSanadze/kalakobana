@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="description" content="ქალაქობანა — კლასიკური ქართული სამაგიდო თამაში ერთი მოთამაშისთვის ოფლაინ რეჟიმში ვირტუალურ ბოტებთან.">
+  <meta name="theme-color" content="#4f46e5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ქალაქობანა">
+  <title>ქალაქობანა — ინდივიდუალური ვებ-თამაში</title>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Core Data Scripts -->
+  <script src="data/letters.js"></script>
+  <script src="data/countries.js"></script>
+  <script src="data/cities.js"></script>
+  <script src="data/plants.js"></script>
+  <script src="data/animals.js"></script>
+  <script src="data/geography.js"></script>
+  <script src="data/names.js"></script>
+  <script src="data/items.js"></script>
+  <script src="data/cars.js"></script>
+  <script src="data/professions.js"></script>
+  <script src="data/dishes.js"></script>
+  <script src="data/celebrities.js"></script>
+  <script src="data/media.js"></script>
+  <script src="data/sports.js"></script>
+  <script src="data/adjectives.js"></script>
+
+  <!-- Engine Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/validator.js"></script>
+  <script src="js/scoring.js"></script>
+  <script src="js/bots.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/game.js"></script>
+</head>
+<body>
+  <canvas id="confetti-canvas"></canvas>
+
+  <div id="app">
+    <!-- Top Navigation Bar -->
+    <header class="app-topbar">
+      <div class="brand" id="brand-home-btn" role="button" tabindex="0" title="მთავარი გვერდი">
+        <span class="brand-icon">🇬🇪</span>
+        <span class="brand-text">ქალაქობანა</span>
+      </div>
+      <div class="topbar-actions">
+        <button id="btn-sound-toggle" class="icon-btn" title="ხმის ჩართვა/გამორთვა" aria-label="ხმის ჩართვა/გამორთვა">
+          <span id="sound-icon">🔊</span>
+        </button>
+        <button id="btn-theme-toggle" class="icon-btn" title="თემის შეცვლა" aria-label="თემის შეცვლა">
+          <span id="theme-icon">🌓</span>
+        </button>
+        <button id="btn-open-settings" class="icon-btn" title="პარამეტრები" aria-label="პარამეტრები">
+          ⚙️
+        </button>
+      </div>
+    </header>
+
+    <!-- 1. HOME SCREEN -->
+    <main id="screen-home" class="screen active">
+      <div class="home-hero">
+        <div class="home-logo-wrap">🏰</div>
+        <h1 class="home-title">ქალაქობანა</h1>
+        <p class="home-subtitle">ითამაშე კლასიკური ქართული თამაში ჭკვიანი ბოტების წინააღმდეგ 100% ოფლაინ რეჟიმში.</p>
+      </div>
+
+      <div class="home-actions">
+        <button id="btn-play-game" class="btn btn-primary btn-lg">
+          ▶️ თამაშის დაწყება
+        </button>
+        
+        <div class="menu-grid">
+          <button id="btn-menu-dict" class="menu-card-btn">
+            <span class="menu-card-icon">📖</span>
+            <span>ლექსიკონი</span>
+          </button>
+          <button id="btn-menu-stats" class="menu-card-btn">
+            <span class="menu-card-icon">📊</span>
+            <span>სტატისტიკა</span>
+          </button>
+          <button id="btn-menu-rules" class="menu-card-btn">
+            <span class="menu-card-icon">📜</span>
+            <span>წესები</span>
+          </button>
+          <button id="btn-menu-settings" class="menu-card-btn">
+            <span class="menu-card-icon">⚙️</span>
+            <span>პარამეტრები</span>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- 2. COUNTDOWN SCREEN -->
+    <section id="screen-countdown" class="screen">
+      <div class="countdown-container">
+        <span class="countdown-label">შემდეგი რაუნდის ასო</span>
+        <div class="countdown-letter-badge" id="countdown-letter">?</div>
+        <div class="countdown-number" id="countdown-timer">3</div>
+        <p class="countdown-hint">მოემზადე! რაუნდი მალე დაიწყება...</p>
+      </div>
+    </section>
+
+    <!-- 3. ROUND ACTIVE SCREEN -->
+    <section id="screen-round" class="screen">
+      <!-- Sticky Round Header -->
+      <div class="round-sticky-header">
+        <div class="round-info-pill">
+          <div class="current-letter-display" id="round-current-letter" title="მიმდინარე ასო">?</div>
+          <div class="round-sub-info">
+            <span class="round-count-text" id="round-number-text">რაუნდი 1/5</span>
+            <span class="score-badge-mini" id="round-current-score">ქულა: 0</span>
+          </div>
+        </div>
+
+        <div class="timer-widget" id="timer-widget">
+          <div class="timer-svg-wrap">
+            <svg class="timer-svg" viewBox="0 0 46 46">
+              <circle class="timer-bg-circle" cx="23" cy="23" r="19"></circle>
+              <circle class="timer-prog-circle" id="timer-prog-circle" cx="23" cy="23" r="19" stroke-dasharray="119.38" stroke-dashoffset="0"></circle>
+            </svg>
+            <span class="timer-digits" id="timer-digits">90</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories Inputs Container -->
+      <div class="categories-list" id="round-categories-container">
+        <!-- Dynamically injected category cards -->
+      </div>
+
+      <!-- Sticky Bottom Action Bar -->
+      <div class="round-bottom-bar">
+        <div class="bottom-bar-inner">
+          <div class="progress-summary">
+            <span class="progress-label">შევსებული</span>
+            <span class="progress-count" id="round-progress-count">0/7</span>
+          </div>
+          <button id="btn-finish-round-early" class="btn btn-primary btn-finish-early">
+            ✓ დავასრულე
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ROUND REVIEW (SELF-CONFIRMATION) SCREEN -->
+    <section id="screen-review" class="screen">
+      <div class="home-hero" style="padding-top: 10px;">
+        <h2>სიტყვების დადასტურება</h2>
+        <p class="home-subtitle">ზოგიერთი თქვენ მიერ დაწერილი სიტყვა ბაზაში ვერ მოიძებნა. დაადასტურეთ მათი სისწორე:</p>
+      </div>
+
+      <div class="review-card" id="review-items-container">
+        <!-- Dynamically injected unknown items -->
+      </div>
+
+      <div style="margin-top: 16px; display: flex; justify-content: center;">
+        <button id="btn-confirm-review" class="btn btn-primary btn-lg" style="width: 100%; max-width: 400px;">
+          დადასტურება და შედეგების ნახვა
+        </button>
+      </div>
+    </section>
+
+    <!-- 5. ROUND RESULTS SCREEN -->
+    <section id="screen-results" class="screen">
+      <div class="results-hero">
+        <div class="results-winner-badge" id="results-round-winner-text">რაუნდის გამარჯვებული 🎉</div>
+        <div class="results-scores-grid" id="results-participants-scores">
+          <!-- Dynamically injected participant scores -->
+        </div>
+      </div>
+
+      <h3 style="margin-bottom: 10px; font-size: 1.1rem;">კატეგორიების შედეგები</h3>
+      <div class="results-table-wrap" id="results-table-container">
+        <!-- Dynamically injected desktop table / mobile cards -->
+      </div>
+
+      <div style="display: flex; gap: 12px; margin-top: 12px;">
+        <button id="btn-next-round" class="btn btn-primary btn-lg" style="flex: 1;">
+          შემდეგი რაუნდი ▶️
+        </button>
+      </div>
+    </section>
+
+    <!-- 6. GAME OVER SCREEN -->
+    <section id="screen-gameover" class="screen">
+      <div class="gameover-hero">
+        <div class="trophy-icon" id="gameover-trophy">🏆</div>
+        <h2 class="gameover-title" id="gameover-title">თამაში დასრულდა!</h2>
+        <p class="home-subtitle" id="gameover-subtitle">საუკეთესო მოთამაშე გამოვლინდა</p>
+      </div>
+
+      <div class="leaderboard-wrap" id="gameover-leaderboard">
+        <!-- Injected final standings -->
+      </div>
+
+      <div class="home-actions" style="margin-top: 24px;">
+        <button id="btn-gameover-play-again" class="btn btn-primary btn-lg">
+          🔄 ახალი თამაში
+        </button>
+        <button id="btn-gameover-to-home" class="btn btn-secondary">
+          🏠 მთავარი მენიუ
+        </button>
+      </div>
+    </section>
+
+    <!-- DIALOG: SETTINGS -->
+    <dialog id="dialog-settings">
+      <div class="dialog-header">
+        <h3 class="dialog-title">⚙️ პარამეტრები</h3>
+        <button class="icon-btn dialog-close-btn" data-close-dialog="dialog-settings">✕</button>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">რაუნდის ხანგრძლივობა</label>
+        <div class="options-pill-group" id="setting-duration-options">
+          <button class="option-pill" data-val="60">60 წმ</button>
+          <button class="option-pill" data-val="90">90 წმ</button>
+          <button class="option-pill" data-val="120">120 წმ</button>
+          <button class="option-pill" data-val="180">180 წმ</button>
+          <button class="option-pill" data-val="0">უსასრულო</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">რაუნდების რაოდენობა</label>
+        <div class="options-pill-group" id="setting-rounds-options">
+          <button class="option-pill" data-val="3">3 რაუნდი</button>
+          <button class="option-pill" data-val="5">5 რაუნდი</button>
+          <button class="option-pill" data-val="10">10 რაუნდი</button>
+          <button class="option-pill" data-val="0">უსასრულო</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">შემოწმების რეჟიმი</label>
+        <div class="setting-desc">როგორ შეფასდეს ბაზაში არარსებული სიტყვები</div>
+        <div class="options-pill-group" id="setting-validation-options">
+          <button class="option-pill" data-val="self">თვითდადასტურება</button>
+          <button class="option-pill" data-val="strict">მკაცრი (ბაზიდან)</button>
+          <button class="option-pill" data-val="free">თავისუფალი</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">მოწინააღმდეგე ბოტები</label>
+        <div class="options-pill-group" id="setting-bot-count-options">
+          <button class="option-pill" data-val="1">1 ბოტი</button>
+          <button class="option-pill" data-val="2">2 ბოტი</button>
+          <button class="option-pill" data-val="3">3 ბოტი</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">ბოტების სირთულე</label>
+        <div class="options-pill-group" id="setting-bot-diff-options">
+          <button class="option-pill" data-val="easy">მარტივი</button>
+          <button class="option-pill" data-val="medium">საშუალო</button>
+          <button class="option-pill" data-val="hard">რთული</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">აქტიური კატეგორიები</label>
+        <div class="categories-toggle-grid" id="setting-categories-grid">
+          <!-- Dynamically populated categories with checkboxes -->
+        </div>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <button id="btn-save-settings" class="btn btn-primary" style="width: 100%;">შენახვა</button>
+      </div>
+    </dialog>
+
+    <!-- DIALOG: STATS -->
+    <dialog id="dialog-stats">
+      <div class="dialog-header">
+        <h3 class="dialog-title">📊 ჩემი სტატისტიკა</h3>
+        <button class="icon-btn dialog-close-btn" data-close-dialog="dialog-stats">✕</button>
+      </div>
+      <div id="stats-content-area">
+        <!-- Dynamically rendered statistics -->
+      </div>
+      <div style="margin-top: 18px; display: flex; gap: 10px;">
+        <button id="btn-reset-stats" class="btn btn-danger" style="flex: 1;">სტატისტიკის განულება</button>
+      </div>
+    </dialog>
+
+    <!-- DIALOG: CUSTOM DICTIONARY -->
+    <dialog id="dialog-dict">
+      <div class="dialog-header">
+        <h3 class="dialog-title">📖 სიტყვების ლექსიკონი</h3>
+        <button class="icon-btn dialog-close-btn" data-close-dialog="dialog-dict">✕</button>
+      </div>
+
+      <div class="dict-search-wrap">
+        <input type="text" id="dict-search-input" class="word-input" placeholder="მოძებნე სიტყვა ბაზაში...">
+      </div>
+
+      <div style="margin-bottom: 14px; display: flex; gap: 8px;">
+        <button id="btn-dict-add-word-toggle" class="btn btn-secondary" style="font-size: 0.85rem; padding: 6px 12px;">+ სიტყვის დამატება</button>
+        <button id="btn-dict-export" class="btn btn-secondary" style="font-size: 0.85rem; padding: 6px 12px;">ექსპორტი</button>
+        <button id="btn-dict-import" class="btn btn-secondary" style="font-size: 0.85rem; padding: 6px 12px;">იმპორტი</button>
+        <input type="file" id="dict-import-file" accept=".json" style="display: none;">
+      </div>
+
+      <div id="dict-add-form" style="display: none; background: var(--bg-app); padding: 12px; border-radius: var(--radius-sm); margin-bottom: 12px;">
+        <div style="margin-bottom: 8px;">
+          <select id="dict-add-category" class="word-input" style="padding: 8px;">
+            <!-- categories -->
+          </select>
+        </div>
+        <div style="margin-bottom: 8px;">
+          <input type="text" id="dict-add-word" class="word-input" placeholder="სიტყვა (მაგ. თბილისი)" style="padding: 8px;">
+        </div>
+        <button id="btn-dict-save-new-word" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">დამატება</button>
+      </div>
+
+      <div class="dict-list-wrap" id="dict-words-list">
+        <!-- Loaded words -->
+      </div>
+    </dialog>
+
+    <!-- DIALOG: RULES -->
+    <dialog id="dialog-rules">
+      <div class="dialog-header">
+        <h3 class="dialog-title">📜 თამაშის წესები</h3>
+        <button class="icon-btn dialog-close-btn" data-close-dialog="dialog-rules">✕</button>
+      </div>
+      <div style="line-height: 1.6; font-size: 0.95rem; color: var(--text-main);">
+        <p><strong>ქალაქობანა</strong> არის კლასიკური ქართული ინტელექტუალური თამაში.</p>
+        <br>
+        <p><strong>🎯 მიზანი:</strong> რაუნდის დასაწყისში შეირჩევა ქართული ანბანის ერთ-ერთი ასო. თქვენ უნდა შეავსოთ თითოეული კატეგორია ამ ასოზე დაწყებული შესაბამისი სიტყვით დროის ამოწურვამდე.</p>
+        <br>
+        <p><strong>🏆 ქულების დარიცხვა:</strong></p>
+        <ul style="padding-left: 20px; margin-top: 6px;">
+          <li><strong>20 ქულა:</strong> თუ მხოლოდ თქვენ დაწერეთ სწორი სიტყვა ამ კატეგორიაში (მოწინააღმდეგეებმა ვერ შეავსეს ან შეეშალათ).</li>
+          <li><strong>10 ქულა:</strong> თუ რამდენიმე მოთამაშემ დაწერა სწორი პასუხი, მაგრამ ყველამ <em>განსხვავებული</em> სიტყვა.</li>
+          <li><strong>5 ქულა:</strong> თუ თქვენ და ერთ ან რამდენიმე მოწინააღმდეგეს დაემთხვათ ერთი და იგივე სიტყვა (ან სინონიმი).</li>
+          <li><strong>0 ქულა:</strong> თუ ველი ცარიელია ან სიტყვა არასწორია.</li>
+          <li><strong>+5 ბონუსი:</strong> თუ ყველაზე ადრე დაასრულებთ რაუნდს ღილაკზე „დავასრულე“ დაჭერით!</li>
+        </ul>
+        <br>
+        <p><strong>💡 რჩევა:</strong> შეარჩიეთ იშვიათი და უჩვეულო სიტყვები, რათა ბოტებს არ დაემთხვეს და მიიღოთ 10 ან 20 ქულა!</p>
+      </div>
+    </dialog>
+  </div>
+
+  <!-- Main UI Controller Application Script -->
+  <script src="js/ui.js"></script>
+
+  <!-- PWA Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(err => {
+          console.warn('SW registration failed:', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

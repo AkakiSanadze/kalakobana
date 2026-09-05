@@ -1,0 +1,19 @@
+{
+  "name": "ქალაქობანა",
+  "short_name": "ქალაქობანა",
+  "description": "ქართული სამაგიდო თამაში ქალაქობანა ერთი მოთამაშისთვის ბოტების წინააღმდეგ ოფლაინ რეჟიმში",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f8fafc",
+  "theme_color": "#4f46e5",
+  "lang": "ka",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
