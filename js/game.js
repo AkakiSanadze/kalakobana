@@ -1,7 +1,17 @@
 (function(root, factory) {
+  let letters = root.KALAKOBANA_LETTERS;
+  if (!letters && root.KALAKOBANA_DATA && root.KALAKOBANA_DATA.letters) {
+    letters = root.KALAKOBANA_DATA.letters;
+  }
+  if (!letters && typeof require === 'function') {
+    try {
+      letters = require('../data/letters.js');
+    } catch (e) {}
+  }
+
   const game = factory(
     root.KALAKOBANA_CONFIG,
-    root.KALAKOBANA_LETTERS,
+    letters,
     root.KALAKOBANA_STORAGE,
     root.KALAKOBANA_VALIDATOR,
     root.KALAKOBANA_SCORING,
@@ -63,24 +73,41 @@
     /**
      * Pick a letter using weights from letters.js, excluding used letters.
      */
-    pickNextLetter(lettersList = (lettersData || [])) {
-      if (!Array.isArray(lettersList) || lettersList.length === 0) {
-        return { letter: 'ა', weight: 5, difficulty: 'easy', impossibleCategories: [] };
+    pickNextLetter(lettersList = null) {
+      let list = lettersList || lettersData;
+      if (!list || !Array.isArray(list) || list.length === 0) {
+        if (typeof window !== 'undefined') {
+          list = window.KALAKOBANA_LETTERS || (window.KALAKOBANA_DATA && window.KALAKOBANA_DATA.letters);
+        } else if (typeof globalThis !== 'undefined') {
+          list = globalThis.KALAKOBANA_LETTERS || (globalThis.KALAKOBANA_DATA && globalThis.KALAKOBANA_DATA.letters);
+        }
       }
 
-      // Candidate letters not yet used
-      let candidates = lettersList.filter(l => !this.usedLetters.has(l.letter));
+      if (!Array.isArray(list) || list.length === 0) {
+        const ALL = ['ა','ბ','გ','დ','ე','ვ','ზ','თ','ი','კ','ლ','მ','ნ','ო','პ','ჟ','რ','ს','ტ','უ','ფ','ქ','ღ','ყ','შ','ჩ','ც','ძ','წ','ჭ','ხ','ჯ','ჰ'];
+        list = ALL.map(l => ({ letter: l, weight: 5, difficulty: 'easy', impossibleCategories: [] }));
+      }
+
+      // Candidate letters not yet used in this game
+      let candidates = list.filter(l => !this.usedLetters.has(l.letter));
       if (candidates.length === 0) {
         // All letters have been used in this game; reset used set
         this.usedLetters.clear();
-        candidates = [...lettersList];
+        candidates = [...list];
       }
 
-      // Calculate total weight
-      const totalWeight = candidates.reduce((sum, item) => sum + (item.weight || 1), 0);
+      // Shuffle candidates array to ensure fair random distribution
+      const shuffled = [...candidates];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+
+      // Calculate total weight and pick random letter
+      const totalWeight = shuffled.reduce((sum, item) => sum + (item.weight || 1), 0);
       let randomVal = Math.random() * totalWeight;
 
-      for (const item of candidates) {
+      for (const item of shuffled) {
         randomVal -= (item.weight || 1);
         if (randomVal <= 0) {
           this.usedLetters.add(item.letter);
@@ -89,7 +116,7 @@
       }
 
       // Fallback
-      const picked = candidates[0];
+      const picked = shuffled[Math.floor(Math.random() * shuffled.length)];
       this.usedLetters.add(picked.letter);
       return picked;
     }

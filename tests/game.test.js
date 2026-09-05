@@ -144,3 +144,16 @@ test('GameEngine: Synchronizes botCount: 0 from storage on startNewGame()', () =
   }
 });
 
+test('GameEngine: Starts new games with diverse random letters (not always "ა")', () => {
+  const lettersPicked = [];
+  for (let i = 0; i < 15; i++) {
+    const engine = new GameEngine();
+    engine.startNewGame();
+    lettersPicked.push(engine.currentLetter);
+  }
+  const uniqueCount = new Set(lettersPicked).size;
+  // Out of 15 games, there should be multiple distinct starting letters
+  assert.ok(uniqueCount >= 5, `Expected at least 5 distinct starting letters in 15 games, got ${uniqueCount}: ${lettersPicked.join(', ')}`);
+});
+
+

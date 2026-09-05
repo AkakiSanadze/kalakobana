@@ -4,6 +4,7 @@
     module.exports = data;
   }
   if (typeof root !== 'undefined') {
+    root.KALAKOBANA_LETTERS = data;
     root.KALAKOBANA_DATA = root.KALAKOBANA_DATA || {};
     root.KALAKOBANA_DATA.letters = data;
   }
