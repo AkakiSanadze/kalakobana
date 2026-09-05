@@ -703,7 +703,7 @@
     document.getElementById('btn-gameover-play-again').addEventListener('click', () => {
       if (audio) audio.playClick();
       stopConfetti();
-      gameEngine.startNewGame();
+      gameEngine.startNewGame({ botCount: gameEngine.settings.botCount });
     });
 
     document.getElementById('btn-gameover-to-home').addEventListener('click', () => {
@@ -847,6 +847,9 @@
 
     document.getElementById('btn-save-settings').onclick = () => {
       storage.saveSettings(settings);
+      if (gameEngine) {
+        gameEngine.settings = { ...gameEngine.settings, ...settings };
+      }
       closeDialog('settings');
     };
   }
@@ -1105,6 +1108,8 @@
       // If user had a game in progress and refreshed
       const restore = confirm('ნაპოვნია შეწყვეტილი თამაში. გსურთ გაგრძელება?');
       if (restore) {
+        if (saved.settings) gameEngine.settings = { ...gameEngine.settings, ...saved.settings };
+        if (saved.participants) gameEngine.participants = saved.participants;
         gameEngine.roundHistory = saved.history;
         gameEngine.cumulativeScores = saved.cumulativeScores || {};
         gameEngine.currentRound = saved.round || 1;

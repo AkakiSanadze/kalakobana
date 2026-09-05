@@ -107,3 +107,40 @@ test('GameEngine: Solo mode (botCount: 0) runs with 1 participant and completes 
   assert.strictEqual(engine.state, 'GAME_OVER');
 });
 
+test('GameEngine: Synchronizes botCount: 0 from storage on startNewGame()', () => {
+  const engine = new GameEngine();
+
+  // Simulate user changing settings in settings dialog to 0 bots
+  const savedSettings = storage.getSettings();
+  savedSettings.botCount = 0;
+  savedSettings.activeCategories = ['city', 'country'];
+  savedSettings.totalRounds = 1;
+  storage.saveSettings(savedSettings);
+
+  // Start new game without customSettings argument (simulating clicking "▶️ თამაშის დაწყება")
+  engine.startNewGame();
+
+  assert.strictEqual(engine.settings.botCount, 0);
+  assert.strictEqual(engine.participants.length, 1);
+  assert.strictEqual(engine.participants[0].id, 'player');
+  assert.strictEqual(engine.participants[0].isHuman, true);
+
+  engine.beginActiveRound();
+  engine.currentLetter = 'თ';
+  engine.currentLetterMeta = { letter: 'თ', weight: 5, difficulty: 'easy', impossibleCategories: [] };
+  engine.setPlayerInput('city', 'თბილისი');
+  engine.setPlayerInput('country', 'თურქეთი');
+  engine.finishRound();
+
+  assert.strictEqual(engine.state, 'ROUND_RESULTS');
+  const round = engine.roundHistory[0];
+  const participantIds = Object.keys(round.roundScores);
+  assert.deepStrictEqual(participantIds, ['player']);
+  assert.strictEqual(engine.participants.length, 1);
+  // Ensure no bots in categoryResults
+  for (const catId of ['city', 'country']) {
+    const pKeys = Object.keys(round.categoryResults[catId]);
+    assert.deepStrictEqual(pKeys, ['player']);
+  }
+});
+

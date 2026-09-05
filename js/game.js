@@ -98,9 +98,20 @@
      * Start a new game session.
      */
     startNewGame(customSettings = null) {
+      // 1. Always load latest persistent settings from storage
+      if (storage) {
+        this.settings = { ...this.settings, ...storage.getSettings() };
+      }
+
+      // 2. Apply any custom overrides for this session
       if (customSettings) {
         this.settings = { ...this.settings, ...customSettings };
         if (storage) storage.saveSettings(this.settings);
+      }
+
+      // 3. Clear any interrupted session
+      if (storage) {
+        storage.clearActiveRound();
       }
 
       this.currentRound = 0;
@@ -119,8 +130,12 @@
         finishedEarly: false
       };
 
-      const botParticipants = bots
-        ? bots.createBotParticipants(this.settings.botCount, this.settings.botDifficulty)
+      const rawBotCount = parseInt(this.settings.botCount, 10);
+      const botCount = isNaN(rawBotCount) ? 0 : Math.max(0, rawBotCount);
+      this.settings.botCount = botCount;
+
+      const botParticipants = (bots && botCount > 0)
+        ? bots.createBotParticipants(botCount, this.settings.botDifficulty)
         : [];
 
       this.participants = [human, ...botParticipants];
@@ -387,7 +402,9 @@
           state: STATES.ROUND_RESULTS,
           round: this.currentRound,
           history: this.roundHistory,
-          cumulativeScores: this.cumulativeScores
+          cumulativeScores: this.cumulativeScores,
+          participants: this.participants,
+          settings: this.settings
         });
       }
 
