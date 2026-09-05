@@ -263,6 +263,39 @@
     const curScore = human ? (engine.cumulativeScores[human.id] || 0) : 0;
     roundScoreText.textContent = `სულ: ${curScore} ქულა`;
 
+    // Timer display setup
+    const digitsEl = document.getElementById('timer-digits');
+    const circleEl = document.getElementById('timer-prog-circle');
+    const widgetEl = document.getElementById('timer-widget');
+
+    if (widgetEl) {
+      widgetEl.classList.remove('timer-urgent');
+    }
+
+    if (engine.totalRoundDurationSec === 0) {
+      if (digitsEl) {
+        digitsEl.textContent = '∞';
+        digitsEl.style.fontSize = '1.3rem';
+      }
+      if (circleEl) {
+        circleEl.style.strokeDashoffset = '0';
+      }
+      if (widgetEl) {
+        widgetEl.setAttribute('title', 'უსასრულო დრო (ულიმიტო)');
+      }
+    } else {
+      if (digitsEl) {
+        digitsEl.textContent = engine.totalRoundDurationSec;
+        digitsEl.style.fontSize = '';
+      }
+      if (circleEl) {
+        circleEl.style.strokeDashoffset = '0';
+      }
+      if (widgetEl) {
+        widgetEl.setAttribute('title', `დარჩენილი დრო: ${engine.totalRoundDurationSec} წმ`);
+      }
+    }
+
     finishBtn.classList.remove('all-filled');
     activeInputs = {};
 
@@ -445,6 +478,16 @@
     const digitsEl = document.getElementById('timer-digits');
     const circleEl = document.getElementById('timer-prog-circle');
     const widgetEl = document.getElementById('timer-widget');
+
+    if (totalDurationSec === 0) {
+      if (digitsEl) {
+        digitsEl.textContent = '∞';
+        digitsEl.style.fontSize = '1.3rem';
+      }
+      if (circleEl) circleEl.style.strokeDashoffset = '0';
+      if (widgetEl) widgetEl.classList.remove('timer-urgent');
+      return;
+    }
 
     if (digitsEl) digitsEl.textContent = timeRemainingSec;
 

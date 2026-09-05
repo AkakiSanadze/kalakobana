@@ -189,7 +189,8 @@
         p.finishedEarly = false;
       }
 
-      this.totalRoundDurationSec = this.settings.roundDuration || 90;
+      const parsedDuration = parseInt(this.settings.roundDuration, 10);
+      this.totalRoundDurationSec = isNaN(parsedDuration) ? 90 : Math.max(0, parsedDuration);
       this.timeRemainingSec = this.totalRoundDurationSec;
 
       this.transitionState(STATES.COUNTDOWN);

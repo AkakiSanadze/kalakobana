@@ -156,4 +156,29 @@ test('GameEngine: Starts new games with diverse random letters (not always "ა"
   assert.ok(uniqueCount >= 5, `Expected at least 5 distinct starting letters in 15 games, got ${uniqueCount}: ${lettersPicked.join(', ')}`);
 });
 
+test('GameEngine: Infinite round duration (roundDuration: 0) does not start a timer', () => {
+  const engine = new GameEngine();
+  engine.startNewGame({
+    roundDuration: 0,
+    totalRounds: 1,
+    activeCategories: ['city', 'country']
+  });
+
+  assert.strictEqual(engine.totalRoundDurationSec, 0);
+  assert.strictEqual(engine.timeRemainingSec, 0);
+
+  engine.beginActiveRound();
+  assert.strictEqual(engine.state, 'ROUND_ACTIVE');
+  assert.strictEqual(engine.timerId, null);
+
+  // Player fills inputs at their own pace and finishes manually
+  engine.setPlayerInput('city', 'თბილისი');
+  engine.setPlayerInput('country', 'თურქეთი');
+  engine.playerFinishEarly();
+
+  assert.strictEqual(engine.state, 'ROUND_RESULTS');
+  assert.strictEqual(engine.roundHistory.length, 1);
+});
+
+
 
