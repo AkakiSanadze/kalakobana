@@ -594,6 +594,34 @@
     });
   }
 
+  // --- Category Suggestions for Missed/Empty Answers ---
+  function getCategorySuggestions(catId, letter, usedWordsSet, letterMeta) {
+    if (letterMeta && letterMeta.impossibleCategories && letterMeta.impossibleCategories.includes(catId)) {
+      return { impossible: true, words: [] };
+    }
+    if (!datasets || !datasets[catId] || !Array.isArray(datasets[catId].words)) {
+      return { impossible: false, words: [] };
+    }
+    const normLetter = validator.normalizeGeorgian(letter);
+    const candidates = datasets[catId].words.filter(item => {
+      if (!item || !item.w) return false;
+      const first = validator.getFirstLetter(item.w);
+      return first === normLetter;
+    });
+
+    const available = candidates.filter(item => {
+      const norm = validator.normalizeGeorgian(item.w);
+      return !usedWordsSet.has(norm);
+    });
+
+    const pool = available.length > 0 ? available : candidates;
+    const sorted = [...pool].sort((a, b) => (b.popularity || 3) - (a.popularity || 3));
+    return {
+      impossible: false,
+      words: sorted.slice(0, 3)
+    };
+  }
+
   // --- Results Screen ---
   function setupResultsScreen(engine) {
     const roundIdx = engine.roundHistory.length - 1;
@@ -652,6 +680,15 @@
       const catMeta = config.ALL_CATEGORIES.find(c => c.id === catId) || { label: catId, icon: '' };
       tableHtml += `<tr><td><strong>${catMeta.icon} ${catMeta.label}</strong></td>`;
 
+      // Collect all words used by participants in this category
+      const usedWordsInCat = new Set();
+      for (const p of engine.participants) {
+        const pRes = (roundData.categoryResults[catId] && roundData.categoryResults[catId][p.id]);
+        if (pRes && pRes.word) {
+          usedWordsInCat.add(validator.normalizeGeorgian(pRes.word));
+        }
+      }
+
       for (const p of engine.participants) {
         const catRes = (roundData.categoryResults[catId] && roundData.categoryResults[catId][p.id]) || {
           word: '',
@@ -662,10 +699,38 @@
         const ptClass = `pt-${catRes.points}`;
         const wordText = catRes.word || '<span style="color:var(--text-muted);">-</span>';
 
+        let suggestHtml = '';
+        if (p.isHuman && (!catRes.isValid || catRes.points === 0 || !catRes.word)) {
+          const sug = getCategorySuggestions(catId, roundData.letter, usedWordsInCat, engine.currentLetterMeta);
+          if (sug.impossible) {
+            suggestHtml = `
+              <div class="result-suggest-box hint-impossible">
+                ℹ️ ამ ასოზე ${catMeta.label} არ არსებობს
+              </div>
+            `;
+          } else if (sug.words.length > 0) {
+            const wordsList = sug.words.map(w => `<strong>${w.w}</strong>`).join(', ');
+            suggestHtml = `
+              <div class="result-suggest-box">
+                <div class="result-suggest-title">💡 სწორი მაგალითები:</div>
+                <div class="result-suggest-words">${wordsList}</div>
+                <div style="margin-top: 3px;">
+                  <button type="button" class="btn-link lib-open-hint-btn" data-cat="${catId}" data-letter="${roundData.letter}" style="background: none; border: none; padding: 0; font-size: 0.78rem; color: var(--primary); text-decoration: underline; cursor: pointer;">
+                    📚 მეტის ნახვა ბიბლიოთეკაში
+                  </button>
+                </div>
+              </div>
+            `;
+          }
+        }
+
         tableHtml += `
           <td>
-            ${wordText}
-            <span class="res-pt-pill ${ptClass}">+${catRes.points}</span>
+            <div>
+              ${wordText}
+              <span class="res-pt-pill ${ptClass}">+${catRes.points}</span>
+            </div>
+            ${suggestHtml}
           </td>
         `;
       }
@@ -674,6 +739,16 @@
 
     tableHtml += `</tbody></table>`;
     tableContainer.innerHTML = tableHtml;
+
+    // Attach click events for hint buttons to open Library
+    tableContainer.querySelectorAll('.lib-open-hint-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const cat = e.currentTarget.dataset.cat;
+        const letter = e.currentTarget.dataset.letter;
+        openDictionaryDialog(cat, letter);
+      });
+    });
 
     // Next round or Game Over
     const maxRounds = engine.settings.totalRounds || 0;
@@ -958,75 +1033,301 @@
     };
   }
 
-  // --- Dictionary Dialog ---
-  function openDictionaryDialog() {
+  // --- Library (ენციკლოპედია) & Dictionary System ---
+  let libState = {
+    activeCategory: 'city',
+    activeLetter: 'all',
+    searchQuery: '',
+    pageLimit: 50
+  };
+  let libEventsAttached = false;
+
+  function openDictionaryDialog(initialCat = null, initialLetter = null) {
+    if (initialCat) {
+      libState.activeCategory = initialCat;
+    }
+    if (initialLetter) {
+      libState.activeLetter = initialLetter;
+    } else if (!initialCat) {
+      libState.activeLetter = 'all';
+    }
+    libState.searchQuery = '';
+    libState.pageLimit = 50;
+
     const catSelect = document.getElementById('dict-add-category');
-    catSelect.innerHTML = config.ALL_CATEGORIES.map(c => `
-      <option value="${c.id}">${c.icon} ${c.label}</option>
-    `).join('');
+    if (catSelect) {
+      catSelect.innerHTML = config.ALL_CATEGORIES.map(c => `
+        <option value="${c.id}">${c.icon} ${c.label}</option>
+      `).join('');
+    }
 
-    renderDictionaryList();
+    const searchInput = document.getElementById('lib-search-input');
+    if (searchInput) searchInput.value = '';
+
+    setupLibraryTabs();
+    setupLibraryCategories();
+    setupLibraryAlphabet();
+    renderLibraryView();
+    setupLibraryEvents();
+
     openDialog('dict');
+  }
 
-    document.getElementById('dict-search-input').oninput = (e) => {
-      renderDictionaryList(e.target.value);
+  function setupLibraryTabs() {
+    const tabLib = document.getElementById('tab-btn-library');
+    const tabCustom = document.getElementById('tab-btn-custom');
+    const viewLib = document.getElementById('view-library-main');
+    const viewCustom = document.getElementById('view-custom-dict');
+    const titleEl = document.getElementById('dict-dialog-title');
+
+    if (!tabLib || !tabCustom || !viewLib || !viewCustom) return;
+
+    tabLib.onclick = () => {
+      tabLib.classList.add('active');
+      tabCustom.classList.remove('active');
+      viewLib.style.display = 'block';
+      viewCustom.style.display = 'none';
+      if (titleEl) titleEl.textContent = '📚 სიტყვების ბიბლიოთეკა';
+      renderLibraryView();
     };
+
+    tabCustom.onclick = () => {
+      tabLib.classList.remove('active');
+      tabCustom.classList.add('active');
+      viewLib.style.display = 'none';
+      viewCustom.style.display = 'block';
+      if (titleEl) titleEl.textContent = '✏️ პირადი ლექსიკონი';
+      renderDictionaryList();
+    };
+  }
+
+  function setupLibraryCategories() {
+    const bar = document.getElementById('lib-category-bar');
+    if (!bar) return;
+    bar.innerHTML = '';
+
+    config.ALL_CATEGORIES.forEach(cat => {
+      const count = (datasets[cat.id] && Array.isArray(datasets[cat.id].words))
+        ? datasets[cat.id].words.length
+        : 0;
+
+      const btn = document.createElement('button');
+      btn.className = `library-cat-pill ${cat.id === libState.activeCategory ? 'active' : ''}`;
+      btn.innerHTML = `${cat.icon} <span>${cat.label}</span> <span style="opacity: 0.65; font-size: 0.75rem;">(${count})</span>`;
+      btn.onclick = () => {
+        libState.activeCategory = cat.id;
+        libState.pageLimit = 50;
+        bar.querySelectorAll('.library-cat-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderLibraryView();
+      };
+      bar.appendChild(btn);
+    });
+  }
+
+  function setupLibraryAlphabet() {
+    const bar = document.getElementById('lib-alphabet-bar');
+    if (!bar) return;
+    bar.innerHTML = '';
+
+    const alphabet = ['all', ...'აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ'.split('')];
+    alphabet.forEach(letItem => {
+      const btn = document.createElement('button');
+      btn.className = `lib-alpha-btn ${letItem === libState.activeLetter ? 'active' : ''}`;
+      btn.textContent = letItem === 'all' ? 'ყველა' : letItem;
+      btn.onclick = () => {
+        libState.activeLetter = letItem;
+        libState.pageLimit = 50;
+        bar.querySelectorAll('.lib-alpha-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderLibraryView();
+      };
+      bar.appendChild(btn);
+    });
+  }
+
+  function renderLibraryView() {
+    const listEl = document.getElementById('lib-words-list');
+    const statusEl = document.getElementById('lib-status-text');
+    const loadMoreWrap = document.getElementById('lib-load-more-wrap');
+    if (!listEl) return;
+
+    const catMeta = config.ALL_CATEGORIES.find(c => c.id === libState.activeCategory) || {
+      id: libState.activeCategory,
+      label: libState.activeCategory,
+      icon: '📚'
+    };
+
+    const allWords = (datasets[libState.activeCategory] && Array.isArray(datasets[libState.activeCategory].words))
+      ? datasets[libState.activeCategory].words
+      : [];
+
+    let filtered = allWords;
+
+    // Filter by letter
+    if (libState.activeLetter !== 'all') {
+      const targetNorm = validator.normalizeGeorgian(libState.activeLetter);
+      filtered = filtered.filter(item => {
+        if (!item || !item.w) return false;
+        return validator.getFirstLetter(item.w) === targetNorm;
+      });
+    }
+
+    // Filter by search query
+    if (libState.searchQuery) {
+      const q = validator.normalizeGeorgian(libState.searchQuery);
+      filtered = filtered.filter(item => {
+        if (!item || !item.w) return false;
+        const normW = validator.normalizeGeorgian(item.w);
+        const normNote = item.note ? validator.normalizeGeorgian(item.note) : '';
+        return normW.includes(q) || normNote.includes(q);
+      });
+    }
+
+    // Status text
+    const letText = libState.activeLetter === 'all' ? 'ყველა ასო' : `ასო „${libState.activeLetter}“`;
+    if (statusEl) {
+      statusEl.textContent = `${catMeta.icon} ${catMeta.label} | ${letText} — სულ: ${filtered.length} სიტყვა`;
+    }
+
+    if (filtered.length === 0) {
+      listEl.innerHTML = `
+        <div style="text-align: center; color: var(--text-muted); padding: 30px;">
+          ამ ფილტრით სიტყვები ვერ მოიძებნა.
+        </div>
+      `;
+      if (loadMoreWrap) loadMoreWrap.style.display = 'none';
+      return;
+    }
+
+    const toShow = filtered.slice(0, libState.pageLimit);
+
+    listEl.innerHTML = toShow.map(item => {
+      const pop = Math.min(5, Math.max(1, item.popularity || 3));
+      const stars = '★'.repeat(pop) + '☆'.repeat(5 - pop);
+      const noteHtml = item.note ? `<div class="lib-word-note">${item.note}</div>` : '';
+      const aliasHtml = (item.aliases && item.aliases.length > 0)
+        ? `<div class="lib-word-aliases">სინონიმები: ${item.aliases.join(', ')}</div>`
+        : '';
+
+      return `
+        <div class="lib-word-card">
+          <div class="lib-word-header">
+            <span class="lib-word-title">${item.w}</span>
+            <span class="lib-word-stars" title="პოპულარობა: ${pop}/5">${stars}</span>
+          </div>
+          ${noteHtml}
+          ${aliasHtml}
+        </div>
+      `;
+    }).join('');
+
+    if (loadMoreWrap) {
+      if (filtered.length > libState.pageLimit) {
+        loadMoreWrap.style.display = 'block';
+        const remaining = filtered.length - libState.pageLimit;
+        const btn = document.getElementById('btn-lib-load-more');
+        if (btn) btn.textContent = `⬇️ მეტის ჩვენება (დარჩენილია ${remaining})`;
+      } else {
+        loadMoreWrap.style.display = 'none';
+      }
+    }
+  }
+
+  function setupLibraryEvents() {
+    if (libEventsAttached) return;
+    libEventsAttached = true;
+
+    const searchInput = document.getElementById('lib-search-input');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        libState.searchQuery = e.target.value.trim();
+        libState.pageLimit = 50;
+        renderLibraryView();
+      });
+    }
+
+    const loadMoreBtn = document.getElementById('btn-lib-load-more');
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', () => {
+        libState.pageLimit += 50;
+        renderLibraryView();
+      });
+    }
+
+    // Custom Dict events
+    const customSearchInput = document.getElementById('dict-search-input');
+    if (customSearchInput) {
+      customSearchInput.addEventListener('input', (e) => {
+        renderDictionaryList(e.target.value);
+      });
+    }
 
     const form = document.getElementById('dict-add-form');
-    document.getElementById('btn-dict-add-word-toggle').onclick = () => {
-      form.style.display = form.style.display === 'none' ? 'block' : 'none';
-    };
+    const toggleBtn = document.getElementById('btn-dict-add-word-toggle');
+    if (toggleBtn && form) {
+      toggleBtn.onclick = () => {
+        form.style.display = form.style.display === 'none' ? 'block' : 'none';
+      };
+    }
 
-    document.getElementById('btn-dict-save-new-word').onclick = () => {
-      const wordInput = document.getElementById('dict-add-word');
-      const cat = catSelect.value;
-      const word = wordInput.value.trim();
-      if (!word) return;
+    const saveNewBtn = document.getElementById('btn-dict-save-new-word');
+    if (saveNewBtn) {
+      saveNewBtn.onclick = () => {
+        const catSelect = document.getElementById('dict-add-category');
+        const wordInput = document.getElementById('dict-add-word');
+        const cat = catSelect ? catSelect.value : 'city';
+        const word = wordInput ? wordInput.value.trim() : '';
+        if (!word) return;
 
-      const added = storage.addCustomWord(cat, word);
-      if (added) {
-        validator.addEntryToIndex(cat, { w: word, popularity: 5, aliases: [], note: 'მომხმარებლის სიტყვა' }, true);
-        wordInput.value = '';
-        form.style.display = 'none';
-        renderDictionaryList();
-        alert('სიტყვა წარმატებით დაემატა!');
-      } else {
-        alert('ეს სიტყვა უკვე არსებობს თქვენს ლექსიკონში!');
-      }
-    };
-
-    document.getElementById('btn-dict-export').onclick = () => {
-      const json = storage.exportCustomDictionary();
-      const blob = new Blob([json], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `kalakobana_dict_${Date.now()}.json`;
-      a.click();
-      URL.revokeObjectURL(url);
-    };
-
-    document.getElementById('btn-dict-import').onclick = () => {
-      document.getElementById('dict-import-file').click();
-    };
-
-    document.getElementById('dict-import-file').onchange = (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = (ev) => {
-        const res = storage.importCustomDictionary(ev.target.result);
-        if (res.success) {
-          // re-init validator index
-          validator.initIndex(datasets, storage.getCustomDictionary());
+        const added = storage.addCustomWord(cat, word);
+        if (added) {
+          validator.addEntryToIndex(cat, { w: word, popularity: 5, aliases: [], note: 'მომხმარებლის სიტყვა' }, true);
+          wordInput.value = '';
+          if (form) form.style.display = 'none';
           renderDictionaryList();
-          alert(`წარმატებით დაემატა ${res.count} ახალი სიტყვა!`);
+          alert('სიტყვა წარმატებით დაემატა!');
         } else {
-          alert('ფაილის იმპორტი ვერ მოხერხდა: ' + res.error);
+          alert('ეს სიტყვა უკვე არსებობს თქვენს ლექსიკონში!');
         }
       };
-      reader.readAsText(file);
-    };
+    }
+
+    const exportBtn = document.getElementById('btn-dict-export');
+    if (exportBtn) {
+      exportBtn.onclick = () => {
+        const json = storage.exportCustomDictionary();
+        const blob = new Blob([json], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `kalakobana_dict_${Date.now()}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+      };
+    }
+
+    const importBtn = document.getElementById('btn-dict-import');
+    const importFile = document.getElementById('dict-import-file');
+    if (importBtn && importFile) {
+      importBtn.onclick = () => importFile.click();
+      importFile.onchange = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          const res = storage.importCustomDictionary(ev.target.result);
+          if (res.success) {
+            validator.initIndex(datasets, storage.getCustomDictionary());
+            renderDictionaryList();
+            alert(`წარმატებით დაემატა ${res.count} ახალი სიტყვა!`);
+          } else {
+            alert('ფაილის იმპორტი ვერ მოხერხდა: ' + res.error);
+          }
+        };
+        reader.readAsText(file);
+      };
+    }
   }
 
   function renderDictionaryList(filterQuery = '') {

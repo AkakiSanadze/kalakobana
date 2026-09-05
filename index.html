@@ -80,8 +80,8 @@
         
         <div class="menu-grid">
           <button id="btn-menu-dict" class="menu-card-btn">
-            <span class="menu-card-icon">📖</span>
-            <span>ლექსიკონი</span>
+            <span class="menu-card-icon">📚</span>
+            <span>ბიბლიოთეკა</span>
           </button>
           <button id="btn-menu-stats" class="menu-card-btn">
             <span class="menu-card-icon">📊</span>
@@ -300,38 +300,77 @@
       </div>
     </dialog>
 
-    <!-- DIALOG: CUSTOM DICTIONARY -->
-    <dialog id="dialog-dict">
+    <!-- DIALOG: LIBRARY & DICTIONARY -->
+    <dialog id="dialog-dict" class="dialog-wide">
       <div class="dialog-header">
-        <h3 class="dialog-title">📖 სიტყვების ლექსიკონი</h3>
+        <h3 class="dialog-title" id="dict-dialog-title">📚 სიტყვების ბიბლიოთეკა</h3>
         <button class="icon-btn dialog-close-btn" data-close-dialog="dialog-dict">✕</button>
       </div>
 
-      <div class="dict-search-wrap">
-        <input type="text" id="dict-search-input" class="word-input" placeholder="მოძებნე სიტყვა ბაზაში...">
+      <!-- Top Tabs: Main Library vs Custom Dict -->
+      <div class="library-tabs-nav">
+        <button id="tab-btn-library" class="tab-pill active">📚 მთავარი ბაზა (11,583)</button>
+        <button id="tab-btn-custom" class="tab-pill">✏️ ჩემი ლექსიკონი</button>
       </div>
 
-      <div style="margin-bottom: 14px; display: flex; gap: 8px;">
-        <button id="btn-dict-add-word-toggle" class="btn btn-secondary" style="font-size: 0.85rem; padding: 6px 12px;">+ სიტყვის დამატება</button>
-        <button id="btn-dict-export" class="btn btn-secondary" style="font-size: 0.85rem; padding: 6px 12px;">ექსპორტი</button>
-        <button id="btn-dict-import" class="btn btn-secondary" style="font-size: 0.85rem; padding: 6px 12px;">იმპორტი</button>
-        <input type="file" id="dict-import-file" accept=".json" style="display: none;">
-      </div>
-
-      <div id="dict-add-form" style="display: none; background: var(--bg-app); padding: 12px; border-radius: var(--radius-sm); margin-bottom: 12px;">
-        <div style="margin-bottom: 8px;">
-          <select id="dict-add-category" class="word-input" style="padding: 8px;">
-            <!-- categories -->
-          </select>
+      <!-- VIEW 1: ENCYCLOPEDIC LIBRARY -->
+      <div id="view-library-main" class="library-view-panel">
+        <!-- Categories Pill Bar -->
+        <div class="library-cat-bar" id="lib-category-bar">
+          <!-- Dynamically populated category pills -->
         </div>
-        <div style="margin-bottom: 8px;">
-          <input type="text" id="dict-add-word" class="word-input" placeholder="სიტყვა (მაგ. თბილისი)" style="padding: 8px;">
+
+        <!-- Alphabet Bar (33 letters + All) -->
+        <div class="library-alpha-bar" id="lib-alphabet-bar">
+          <!-- Dynamically populated alphabet pills -->
         </div>
-        <button id="btn-dict-save-new-word" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">დამატება</button>
+
+        <!-- Search input -->
+        <div class="dict-search-wrap" style="margin-bottom: 8px;">
+          <input type="text" id="lib-search-input" class="word-input" placeholder="🔍 მოძებნე სიტყვა ბიბლიოთეკაში...">
+        </div>
+
+        <div class="lib-status-bar" id="lib-status-text">
+          იტვირთება...
+        </div>
+
+        <div class="dict-list-wrap" id="lib-words-list">
+          <!-- Word cards loaded dynamically -->
+        </div>
+
+        <div id="lib-load-more-wrap" style="text-align: center; margin-top: 10px; display: none;">
+          <button id="btn-lib-load-more" class="btn btn-secondary" style="font-size: 0.85rem; padding: 6px 16px;">⬇️ მეტის ჩვენება (+50)</button>
+        </div>
       </div>
 
-      <div class="dict-list-wrap" id="dict-words-list">
-        <!-- Loaded words -->
+      <!-- VIEW 2: CUSTOM DICTIONARY (USER'S OWN WORDS) -->
+      <div id="view-custom-dict" class="library-view-panel" style="display: none;">
+        <div class="dict-search-wrap">
+          <input type="text" id="dict-search-input" class="word-input" placeholder="მოძებნე ჩემს სიტყვებში...">
+        </div>
+
+        <div style="margin-bottom: 14px; display: flex; gap: 8px; flex-wrap: wrap;">
+          <button id="btn-dict-add-word-toggle" class="btn btn-primary" style="font-size: 0.85rem; padding: 6px 12px;">+ სიტყვის დამატება</button>
+          <button id="btn-dict-export" class="btn btn-secondary" style="font-size: 0.85rem; padding: 6px 12px;">📥 ექსპორტი</button>
+          <button id="btn-dict-import" class="btn btn-secondary" style="font-size: 0.85rem; padding: 6px 12px;">📤 იმპორტი</button>
+          <input type="file" id="dict-import-file" accept=".json" style="display: none;">
+        </div>
+
+        <div id="dict-add-form" style="display: none; background: var(--bg-app); padding: 12px; border-radius: var(--radius-sm); margin-bottom: 12px;">
+          <div style="margin-bottom: 8px;">
+            <select id="dict-add-category" class="word-input" style="padding: 8px;">
+              <!-- categories -->
+            </select>
+          </div>
+          <div style="margin-bottom: 8px;">
+            <input type="text" id="dict-add-word" class="word-input" placeholder="სიტყვა (მაგ. თბილისი)" style="padding: 8px;">
+          </div>
+          <button id="btn-dict-save-new-word" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">შენახვა</button>
+        </div>
+
+        <div class="dict-list-wrap" id="dict-words-list">
+          <!-- Loaded custom words -->
+        </div>
       </div>
     </dialog>
 

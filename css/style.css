@@ -1087,3 +1087,187 @@ dialog::backdrop {
     grid-template-columns: 1fr;
   }
 }
+
+/* ========================================================
+   Library (ენციკლოპედია) & Suggested Answers Styles
+   ======================================================== */
+.dialog-wide {
+  max-width: 680px;
+  width: 95vw;
+}
+
+.library-tabs-nav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+.tab-pill {
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--text-main);
+  transition: all var(--transition-fast);
+}
+
+.tab-pill.active {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.library-cat-bar {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.library-cat-pill {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all var(--transition-fast);
+}
+
+.library-cat-pill.active {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.library-alpha-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.lib-alpha-btn {
+  min-width: 28px;
+  height: 28px;
+  padding: 0 4px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.lib-alpha-btn:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.lib-alpha-btn.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.lib-status-bar {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.lib-word-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  transition: transform var(--transition-fast);
+}
+
+.lib-word-card:hover {
+  border-color: var(--primary);
+}
+
+.lib-word-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.lib-word-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.lib-word-stars {
+  font-size: 0.75rem;
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.lib-word-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.lib-word-aliases {
+  font-size: 0.78rem;
+  color: var(--primary);
+  margin-top: 2px;
+}
+
+/* Result Screen Suggested Words Box */
+.result-suggest-box {
+  margin-top: 6px;
+  padding: 5px 8px;
+  background: rgba(245, 158, 11, 0.1);
+  border-left: 3px solid #f59e0b;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--text-main);
+}
+
+.result-suggest-box.hint-impossible {
+  background: rgba(100, 116, 139, 0.1);
+  border-left-color: #64748b;
+  color: var(--text-muted);
+}
+
+.result-suggest-title {
+  font-weight: 700;
+  color: #b45309;
+}
+
+[data-theme="dark"] .result-suggest-title {
+  color: #fbbf24;
+}
+
+.result-suggest-words strong {
+  color: var(--text-main);
+  background: var(--bg-app);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.85rem;
+}
+
