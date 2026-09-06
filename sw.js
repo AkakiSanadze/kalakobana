@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kalakobana-v12';
+const CACHE_NAME = 'kalakobana-v13';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -6,6 +6,12 @@ const ASSETS_TO_CACHE = [
   './css/style.css',
   './manifest.json',
   './icon.svg',
+  './favicon.ico',
+  './favicon-32x32.png',
+  './favicon-16x16.png',
+  './apple-touch-icon.png',
+  './icon-192.png',
+  './icon-512.png',
   './data/letters.js',
   './data/countries.js',
   './data/cities.js',

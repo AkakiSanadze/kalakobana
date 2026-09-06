@@ -40,6 +40,26 @@ function buildSingleFile() {
   // Remove service worker registration from the standalone file since SW requires HTTP/HTTPS
   html = html.replace(/<script>\s*if \('serviceWorker'[\s\S]*?<\/script>/, '<!-- Standalone Offline Bundle (No SW needed) -->');
 
+  // Copy icons and manifest to dist
+  const assetFiles = [
+    'icon.svg',
+    'favicon.ico',
+    'favicon-32x32.png',
+    'favicon-16x16.png',
+    'apple-touch-icon.png',
+    'icon-192.png',
+    'icon-512.png',
+    'manifest.json'
+  ];
+
+  for (const file of assetFiles) {
+    const src = path.join(rootDir, file);
+    const dest = path.join(distDir, file);
+    if (fs.existsSync(src)) {
+      fs.copyFileSync(src, dest);
+    }
+  }
+
   fs.writeFileSync(distHtmlPath, html, 'utf8');
 
   const stats = fs.statSync(distHtmlPath);
